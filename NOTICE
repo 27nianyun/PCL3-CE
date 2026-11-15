@@ -124,6 +124,35 @@ System.Text.Json 等）按 Microsoft 的 MIT 许可提供，无需单独声明�
   * Resources/Font.ttf / mcmod.buf 等  —— 随 PCL 源码分发，许可见 PCL 原项目声明
 
 ===============================================================================
+七、参考的其他启动器项目
+===============================================================================
+
+本项目在功能设计过程中，参考或借鉴了以下开源项目的实现：
+
+  * PCL Symbio Edition（本项目的基础，基岩版管理与资源下载参考）
+    https://github.com/Hydrogen-Peroxide/PCL-Symbio-Edition
+    License: PCL 自定义许可 + Apache License 2.0
+
+  * Portal Launcher（联机 / 多人整合包同步）
+    https://github.com/Portal-Launcher/PortalLauncher
+    License: GNU General Public License v3.0
+
+  * Axolotl Launcher（多人游戏 / 皮肤选择器 / 实验室）
+    https://github.com/Axolotl-Launcher/Axolotl
+    License: GNU General Public License v3.0
+
+  * SeaLantern（自建 Minecraft 服务器管理）
+    https://github.com/SeaLantern-Studio/SeaLantern
+    License: GNU Affero General Public License v3.0
+
+  * PCL2-Nex（插件商店 / 插件扩展机制）
+    https://github.com/PCL-Nex-Developer/PCL2-Nex
+    License: Apache License 2.0（Plain Craft Launcher 2 目录沿用 PCL 自定义许可）
+
+本项目仅参考上述项目的功能设计与部分实现思路，相关著作权归各项目作者
+所有；若直接移植了代码，已在源码注释中逐处标注出处。
+
+===============================================================================
 Third-Party Notices (English Summary)
 ===============================================================================
 
