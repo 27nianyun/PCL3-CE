@@ -1,0 +1,159 @@
+**简体中文** | [English](README-EN.md) | [繁體中文](README-ZH_TW.md)
+
+<div align="center">
+
+<img src="Plain Craft Launcher 2/Images/icon.png" alt="Logo" width="96" height="96">
+
+# 三氯化磷启动器（PCL₃）
+
+[![Stars](https://img.shields.io/github/stars/27nianyun/PCL3?style=for-the-badge&logo=github&label=stars&labelColor=444444&color=eac54f)](https://github.com/27nianyun/PCL3/stargazers)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=for-the-badge)](LICENSE)
+
+[下载 PCL₃](https://github.com/27nianyun/PCL3/releases) ·
+[提交问题](https://github.com/27nianyun/PCL3/issues) ·
+[更新日志](CHANGELOG.md)
+
+</div>
+
+**三氯化磷启动器（PCL₃）** 是一款免费开源的 Minecraft 启动器，基于 PCL（Plain Craft Launcher）开源代码二次开发，在保留 PCL 原有交互习惯的基础上，补齐了基岩版支持、实例管理、资源下载、模组管理增强等能力，并加入了多项专属功能。
+
+- 当前版本：`2.17.13`
+- 上游基线：PCL `2.12.1`
+- 技术栈：C# / WPF / .NET 10
+
+> PCL₃ 与 PCL 官方版、PCL CE 官方版均无隶属关系，请勿向官方仓库反馈 PCL₃ 的问题。
+
+---
+
+## 功能概览
+
+### Java 版
+
+- 官方正式版、快照与历史版本一键安装，自动补全依赖并选择合适的 Java 运行环境
+- 8 种安装选项：Forge、NeoForge、Fabric、Legacy Fabric、OptiFine、LiteLoader、Cleanroom、LabyMod
+- 支持整合包安装与模组加载器切换
+
+### 基岩版
+
+- 读取系统中已安装的 Minecraft 基岩版，区分 UWP 旧版与 GDK 新版
+- 支持导入安装包并解包到独立目录，不影响其他版本
+- 内置 Xbox 账号登录，登录后可直接启动
+- GDK 便携版可按版本选择加载器：原版、LeviLamina（按游戏版本自动安装）或 BLoader（随启动器分发）
+- 按版本类型筛选，支持按版本号搜索与本地管理
+
+### 资源下载
+
+- CurseForge 与 Modrinth 双源检索
+- 覆盖模组、整合包、光影、资源包、数据包与世界存档，下载后自动放入对应目录
+
+### 实例管理
+
+- 每个实例拥有独立的模组、存档、截图与配置
+- 单个模组可随时禁用，便于排查冲突
+- 存档与截图集中浏览、备份，并可一键打开所在目录
+- 实例内维护常用服务器列表，支持整体打包导出
+
+### 使用体验
+
+- 简体中文与 English (US) 提供完整界面资源
+- 主题配色与背景可自定义，页面切换与列表滚动带有过渡动画
+- 自动扫描本机 Java，减少手动配置
+- 启动失败时对日志进行分析，给出可读的原因与建议
+
+---
+
+## 本分支新增功能
+
+相比上游 PCL SE，PCL₃ 额外实现了以下专属功能：
+
+### 模组管理增强
+
+- **模组版本自动匹配**：在「工具」页一键扫描本地模组，依据整合包要求的 Minecraft 版本与模组加载器，自动筛选并提示版本不匹配的模组，支持「只看不匹配」过滤。
+- **强制删除模组**：提供「强制删除」按钮，从文件资源管理器中直接永久删除模组（不经过回收站），删除前二次确认。
+
+### 整合包与存档导入
+
+- **导入整合包到现有游戏文件夹**：导入整合包时，除了新建实例，还可选择直接导入到某个已存在的游戏文件夹（.minecraft 根目录），不必新建实例；实例名输入框默认填入整合包名字。
+- **一键导入压缩存档**：直接选择 `.zip` / `.rar` / `.7z` / `.tar` / `.gz` 等压缩包导入存档，自动解压并定位存档目录。
+
+### 启动器增强
+
+- **每次启动默认为中文**：游戏每次启动都强制使用启动器语言（默认简体中文），并自动开启 Unicode 字体，避免中文乱码。
+- **工具页转盘与滚动**：工具一栏支持上下滑动，转盘工具修复文字显示。
+- **自动更新**：内置指向本仓库 GitHub Release 的自动更新源，可在设置中检查并更新到最新版本。
+
+---
+
+## 支持平台
+
+| 操作系统 | 支持情况 | 环境要求 |
+|---|---|---|
+| Windows 10 1809 (17763) 或更高 | 完整支持 | [.NET 10 Desktop Runtime](https://get.dot.net/10) |
+| Windows 8 - Windows 10 1809 (17763) | 理论能跑，酌情提供支持 | [.NET 10 Desktop Runtime](https://get.dot.net/10) |
+| Windows 7 或更低版本 | 不支持 | / |
+| macOS / Linux / 其他操作系统 | 仅支持交叉编译开发，无法直接运行 | [.NET 10 SDK](https://get.dot.net/10) |
+
+> 仅对最新版本的启动器提供支持。
+
+## 下载与使用
+
+1. 从 [Releases](https://github.com/27nianyun/PCL3/releases) 下载最新版本的 `PCL₃.exe`
+2. 放到任意目录（启动器为绿色便携版，不会写入系统目录）
+3. 运行 `PCL₃.exe`，选择 Java 版或基岩版后即可启动游戏
+
+> Release 中提供的为自包含单文件版本，无需额外安装 .NET 运行时。若使用框架依赖方式自行构建，则需要预先安装 [.NET 10 Desktop Runtime](https://get.dot.net/10)。
+
+## 从源码构建
+
+需要 [.NET 10 SDK](https://get.dot.net/10)。SDK 基线由 [global.json](global.json) 固定。请在仓库根目录执行：
+
+```powershell
+# 自包含单文件发布（内置运行时，推荐用于分发）
+dotnet publish "Plain Craft Launcher 2/Plain Craft Launcher 2.csproj" `
+  -c Release -p:Platform=x64 -r win-x64 --self-contained true -o ./publish
+
+# 与 CI 一致的框架依赖发布
+dotnet publish "Plain Craft Launcher 2/Plain Craft Launcher 2.csproj" `
+  -c Release -p:Platform=x64 -p:PublishSingleFile=true `
+  -p:DeleteExistingFiles=true -o ./artifact --no-self-contained
+```
+
+将 `-p:Platform=x64` 换成 `-p:Platform=ARM64` 即可构建 ARM64 版本。
+
+仅需验证编译是否通过时，可直接执行：
+
+```powershell
+dotnet build "Plain Craft Launcher 2/Plain Craft Launcher 2.csproj" -c Release -p:Platform=x64
+```
+
+## 项目结构
+
+| 目录 | 说明 |
+|---|---|
+| `Plain Craft Launcher 2/` | WPF 主程序：界面、页面与 Minecraft 启动逻辑 |
+| `PCL.Core/` | 核心库：配置、网络与下载、Java、存档、动画、本地化、日志等 |
+| `PCL.Core.SourceGenerators/` | 配置与依赖注入相关的源生成器 |
+| `PCL.Core.Test/` | PCL.Core 的单元测试 |
+| `.github/` | CI 构建与发布工作流 |
+
+## 声明
+
+- **项目性质**：PCL₃ 是基于 PCL Community Edition（PCL CE）分支衍生的独立版本，与 LTCatt（龙腾猫跃）维护的 PCL2 官方项目、PCL-Community 维护的 PCL CE 官方项目均无隶属关系。
+- **支持范围**：PCL₃ 不支持「我的世界中国版」，也不提供与该版本相关的任何功能或适配。
+- **API 使用**：PCL₃ 仅通过经 Mojang Studios 批准的 API 访问 Minecraft 国际版的相关服务。
+- **代码来源**：本项目不包含任何 Minecraft（含「我的世界中国版」）的代码，也不包含 Mojang Studios 及其中国代理商的任何代码。
+- **正版倡导**：我们鼓励通过官方渠道购买并游玩正版 Minecraft。
+
+## 许可证
+
+- `Plain Craft Launcher 2/` 使用 [自定义许可证](<Plain Craft Launcher 2/LICENCE>)
+- 其余所有目录使用 [Apache License 2.0](LICENSE)
+
+## 致谢
+
+- [PCL](https://github.com/Meloong-Git/PCL) — 原作者 龙腾猫跃
+- PCL CE — 社区维护分支，本项目的直接上游
+- [BedrockBoot](https://github.com/Round-Studio/BedrockBoot) 与 [BedrockLauncher.Core](https://github.com/Round-Studio/BedrockLauncher.Core) — Round Studio 开发的基岩版项目（GPL-3.0）
+- [BLoader](https://github.com/Chlna6666/BLoader) — Chlna6666 开发的基岩版 Mod 加载器（GPL-3.0）
+- [LeviLamina](https://github.com/LiteLDev/LeviLamina) 与 [lip](https://github.com/LiteLDev/lip) — LeviLamina 客户端（LGPL-3.0 / GPL-3.0）
+- 以及 Dapper、Downloader、Markdig.Wpf、NAudio、Microsoft.Data.Sqlite、protobuf-net、Lucide 等开源项目，完整信息见 [metadata.json](<Plain Craft Launcher 2/metadata.json>) 与启动器「关于」页面

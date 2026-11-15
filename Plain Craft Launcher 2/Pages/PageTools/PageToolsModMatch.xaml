@@ -1,0 +1,45 @@
+<local:MyPageRight x:Class="PCL.PageToolsModMatch"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:local="clr-namespace:PCL"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d"
+                   PanScroll="{Binding ElementName=PanBack}">
+    <local:MyScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="PanBack">
+        <StackPanel x:Name="PanMain" Margin="25,10" Grid.IsSharedSizeScope="True">
+
+            <local:MyCard Margin="0,15" Title="模组版本匹配">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="13"
+                               Foreground="{DynamicResource ColorBrushGray3}"
+                               Text="扫描所选实例的 mods 目录，自动识别每个模组声明的 Minecraft 版本要求，并判断是否与实例当前游戏版本匹配，帮你快速找出需要更换版本的模组。" />
+
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="目标实例" VerticalAlignment="Center" FontSize="13" Margin="0,0,10,0" />
+                        <local:MyComboBox x:Name="ComboInstance" Grid.Column="1"
+                                          HorizontalAlignment="Stretch" Height="34" />
+                    </Grid>
+
+                    <WrapPanel Margin="0,0,0,12">
+                        <local:MyButton x:Name="BtnScan" MinWidth="160" Text="扫描并匹配版本"
+                                        ColorType="Highlight" Margin="0,0,12,0" Click="BtnScan_Click" />
+                        <local:MyButton x:Name="BtnOpenMods" MinWidth="120" Text="打开 mods 目录"
+                                        Margin="0,0,12,0" Click="BtnOpenMods_Click" />
+                        <local:MyButton x:Name="BtnOnlyMismatch" MinWidth="120" Text="只看不匹配"
+                                        Click="BtnOnlyMismatch_Click" />
+                    </WrapPanel>
+
+                    <TextBlock x:Name="LabSummary" TextWrapping="Wrap" FontSize="13" Margin="0,0,0,8" />
+
+                    <StackPanel x:Name="PanResult" />
+                </StackPanel>
+            </local:MyCard>
+
+        </StackPanel>
+    </local:MyScrollViewer>
+</local:MyPageRight>

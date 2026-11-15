@@ -1,0 +1,41 @@
+<local:MyPageRight x:Class="PCL.PageToolsRecommend"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:local="clr-namespace:PCL"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d"
+                   PanScroll="{Binding ElementName=PanBack}">
+    <local:MyScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="PanBack">
+        <StackPanel x:Name="PanMain" Margin="25,10" Grid.IsSharedSizeScope="True">
+
+            <local:MyCard Margin="0,15" Title="根据电脑配置推荐">
+                <StackPanel Margin="25,40,25,20">
+                    <WrapPanel Margin="0,0,0,12">
+                        <local:MyButton x:Name="BtnRefreshRecommend" MinWidth="140" Text="重新检测并推荐"
+                                        Margin="0,0,12,0" ColorType="Highlight"
+                                        Click="BtnRefreshRecommend_Click" />
+                    </WrapPanel>
+                    <StackPanel x:Name="PanRecommend" />
+                </StackPanel>
+            </local:MyCard>
+
+            <local:MyCard Margin="0,0,0,15" Title="按玩家偏好推荐版本">
+                <StackPanel Margin="25,40,25,20">
+                    <WrapPanel Margin="0,0,0,12">
+                        <local:MyButton x:Name="BtnPrefStable" MinWidth="120" Text="稳定版" Margin="0,0,12,0"
+                                        Click="BtnPrefStable_Click" />
+                        <local:MyButton x:Name="BtnPrefLatest" MinWidth="120" Text="最新版" Margin="0,0,12,0"
+                                        Click="BtnPrefLatest_Click" />
+                        <local:MyButton x:Name="BtnPrefModded" MinWidth="120" Text="模组友好" Margin="0,0,12,0"
+                                        Click="BtnPrefModded_Click" />
+                        <local:MyButton x:Name="BtnPrefPerformance" MinWidth="120" Text="低配优化"
+                                        Click="BtnPrefPerformance_Click" />
+                    </WrapPanel>
+                    <StackPanel x:Name="PanVersionRecommend" />
+                </StackPanel>
+            </local:MyCard>
+
+        </StackPanel>
+    </local:MyScrollViewer>
+</local:MyPageRight>

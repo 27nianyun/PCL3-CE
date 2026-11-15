@@ -1,0 +1,69 @@
+<local:MyPageRight x:Class="PCL.PageToolsPreset"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:local="clr-namespace:PCL"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d"
+                   PanScroll="{Binding ElementName=PanBack}">
+    <local:MyScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="PanBack">
+        <StackPanel x:Name="PanMain" Margin="25,10" Grid.IsSharedSizeScope="True">
+
+            <!-- 创建预设 -->
+            <local:MyCard Margin="0,15" Title="创建 / 管理预设">
+                <StackPanel Margin="25,40,25,20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"
+                                   Text="预设名称" Margin="0,0,20,0" />
+                        <local:MyTextBox x:Name="TextPresetName" Grid.Column="1" Grid.Row="0" Height="28"
+                                         HintText="例如：我的常用优化模组" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"
+                                   Text="来源实例" Margin="0,12,20,12" />
+                        <local:MyComboBox x:Name="ComboSourceInstance" Grid.Column="1" Grid.Row="1" Height="28"
+                                          Margin="0,12,0,12" />
+
+                        <WrapPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,8,0,0">
+                            <local:MyButton x:Name="BtnCreateFromInstance" MinWidth="170" Text="从所选实例导入模组"
+                                            Margin="0,0,12,0" ColorType="Highlight"
+                                            Click="BtnCreateFromInstance_Click" />
+                            <local:MyButton x:Name="BtnCreateFromFiles" MinWidth="150" Text="从本地文件选择"
+                                            Margin="0,0,12,0" Click="BtnCreateFromFiles_Click" />
+                        </WrapPanel>
+                    </Grid>
+                </StackPanel>
+            </local:MyCard>
+
+            <!-- 一键添加著名优化模组 -->
+            <local:MyCard Margin="0,0,0,15" Title="一键添加著名优化模组">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap" Foreground="{DynamicResource ColorBrushGray3}"
+                               Text="点击即可将这些常用优化模组的名称加入预设（需配合 Modrinth/CurseForge 下载对应版本）。" />
+                    <WrapPanel x:Name="PanFamousMods" />
+                </StackPanel>
+            </local:MyCard>
+
+            <!-- 预设列表 -->
+            <local:MyCard Margin="0,0,0,15" Title="我的预设">
+                <StackPanel Margin="25,40,25,20">
+                    <WrapPanel Margin="0,0,0,12">
+                        <local:MyButton x:Name="BtnRefreshPresets" MinWidth="100" Text="刷新"
+                                        Margin="0,0,12,0" Click="BtnRefreshPresets_Click" />
+                    </WrapPanel>
+                    <StackPanel x:Name="PanPresetList" />
+                </StackPanel>
+            </local:MyCard>
+
+        </StackPanel>
+    </local:MyScrollViewer>
+</local:MyPageRight>

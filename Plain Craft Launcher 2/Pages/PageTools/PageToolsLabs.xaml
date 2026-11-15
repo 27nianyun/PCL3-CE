@@ -1,0 +1,58 @@
+<local:MyPageRight x:Class="PCL.PageToolsLabs"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:local="clr-namespace:PCL"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d"
+                   PanScroll="{Binding ElementName=PanBack}">
+    <local:MyScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="PanBack">
+        <StackPanel x:Name="PanMain" Margin="25,10" Grid.IsSharedSizeScope="True">
+
+            <local:MyCard Margin="0,15" Title="实验室（实验性功能）">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap" Foreground="{DynamicResource ColorBrushGray3}"
+                               Text="以下为实验性功能，可能存在不稳定，请按需使用。" />
+                </StackPanel>
+            </local:MyCard>
+
+            <!-- 联机 -->
+            <local:MyCard Margin="0,0,0,15" Title="联机（Portal 基岩版联机）">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap" Foreground="{DynamicResource ColorBrushGray3}"
+                               Text="Portal 是第三方基岩版联机工具（独立程序）。此处提供入口，需自行准备 Portal 可执行文件。" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <local:MyTextBox x:Name="TextPortalPath" Height="28" HintText="Portal 程序路径（可选，留空自动检测）" />
+                        <local:MyButton Grid.Column="1" x:Name="BtnBrowsePortal" MinWidth="80" Text="浏览"
+                                        Margin="10,0,0,0" Click="BtnBrowsePortal_Click" />
+                    </Grid>
+                    <WrapPanel Margin="0,12,0,0">
+                        <local:MyButton x:Name="BtnLaunchPortal" MinWidth="140" Text="启动 Portal 联机"
+                                        Margin="0,0,12,0" ColorType="Highlight" Click="BtnLaunchPortal_Click" />
+                    </WrapPanel>
+                </StackPanel>
+            </local:MyCard>
+
+            <!-- 开服务器 -->
+            <local:MyCard Margin="0,0,0,15" Title="开服务器（一键开服）">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap" Foreground="{DynamicResource ColorBrushGray3}"
+                               Text="快速搭建本地 Minecraft 服务器。选择目标实例后，这里会打开服务器目录并提供一键启动脚本。" />
+                    <TextBlock Text="目标实例" Margin="0,0,0,6" />
+                    <local:MyComboBox x:Name="ComboInstance" Height="28" />
+                    <WrapPanel Margin="0,12,0,0">
+                        <local:MyButton x:Name="BtnOpenServerFolder" MinWidth="150" Text="打开服务器目录"
+                                        Margin="0,0,12,0" Click="BtnOpenServerFolder_Click" />
+                        <local:MyButton x:Name="BtnCreateServerScript" MinWidth="170" Text="生成一键启动脚本"
+                                        Margin="0,0,12,0" ColorType="Highlight" Click="BtnCreateServerScript_Click" />
+                    </WrapPanel>
+                </StackPanel>
+            </local:MyCard>
+
+        </StackPanel>
+    </local:MyScrollViewer>
+</local:MyPageRight>
