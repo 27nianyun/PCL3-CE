@@ -16,7 +16,7 @@ public sealed class UpdateService : GeneralService
 
     public override void Start()
     {
-        // PCL₃：已彻底禁用自更新，防止从原地址下载后覆盖修改内容。
+        // PCL₃-CE：已彻底禁用自更新，防止从原地址下载后覆盖修改内容。
         // 无论是否传入 update/update_finished/update_failed 参数，都不执行任何文件替换或下载操作。
         Context.Debug("自更新功能已禁用，忽略所有更新参数");
         Context.DeclareStopped();

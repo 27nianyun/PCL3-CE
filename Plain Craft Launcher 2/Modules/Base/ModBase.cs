@@ -60,7 +60,7 @@ public static class ModBase
     /// <summary>
     ///     项目主页地址（GitHub）。
     /// </summary>
-    public const string ProjectUrl = "https://github.com/27nianyun/PCL3";
+    public const string ProjectUrl = "https://github.com/27nianyun/PCL3-CE";
 
     /// <summary>
     ///     更新源：GitHub 仓库所有者。
@@ -70,7 +70,7 @@ public static class ModBase
     /// <summary>
     ///     更新源：GitHub 仓库名。
     /// </summary>
-    public const string UpdateRepo = "PCL3";
+    public const string UpdateRepo = "PCL3-CE";
     /// <summary>
     ///     主窗口句柄。
     /// </summary>
@@ -126,7 +126,7 @@ public static class ModBase
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PCL")) + @"\";
 
     /// <summary>
-    ///     AppData 中的 PCL₃ 配置文件夹路径，以 \ 结尾。
+    ///     AppData 中的 PCL₃-CE 配置文件夹路径，以 \ 结尾。
     /// </summary>
     public static string pathAppdataConfig = GetLegacyAppDataPath("legacy-shared",
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),

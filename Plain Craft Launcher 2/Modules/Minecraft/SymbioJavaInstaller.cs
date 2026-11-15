@@ -11,7 +11,7 @@ using PCL.Core.Utils.OS;
 namespace PCL;
 
 /// <summary>
-///     PCL₃ 自动问题处理 —— Java 运行环境自动匹配与安装。
+///     PCL₃-CE 自动问题处理 —— Java 运行环境自动匹配与安装。
 ///     1. 按游戏版本 + 加载器自动映射所需 Java 大版本。
 ///     2. 本地内置的 Oracle JDK/JRE 安装包优先，静默安装到默认目录（C:\Program Files\Java\）。
 ///     3. 本地未覆盖的 Java 版本，复用 PCL 现有的 Mojang Java 下载能力自动下载。
@@ -186,7 +186,7 @@ public static class SymbioJavaInstaller
                 }
                 catch (Exception ex)
                 {
-                    ModBase.Log(ex, $"[PCL₃] 自动安装 Java {requiredMajor} 失败");
+                    ModBase.Log(ex, $"[PCL₃-CE] 自动安装 Java {requiredMajor} 失败");
                     ModBase.RunInUi(() =>
                         HintService.Hint($"自动安装 Java {requiredMajor} 失败：" + ex.Message, HintType.Error));
                 }
@@ -194,7 +194,7 @@ public static class SymbioJavaInstaller
         }
         catch (Exception ex)
         {
-            ModBase.Log(ex, "[PCL₃] 确保 Java 安装失败");
+            ModBase.Log(ex, "[PCL₃-CE] 确保 Java 安装失败");
             ModBase.RunInUi(() => HintService.Hint("确保 Java 安装失败：" + ex.Message, HintType.Error));
         }
     }
@@ -207,17 +207,17 @@ public static class SymbioJavaInstaller
     {
         if (!LocalInstallerMap.TryGetValue(requiredMajor, out var installerPath))
         {
-            ModBase.Log($"[PCL₃] 本地无 Java {requiredMajor} 安装包，转由网络下载");
+            ModBase.Log($"[PCL₃-CE] 本地无 Java {requiredMajor} 安装包，转由网络下载");
             return false;
         }
 
         if (!File.Exists(installerPath))
         {
-            ModBase.Log($"[PCL₃] 本地安装包不存在：{installerPath}，转由网络下载");
+            ModBase.Log($"[PCL₃-CE] 本地安装包不存在：{installerPath}，转由网络下载");
             return false;
         }
 
-        ModBase.Log($"[PCL₃] 使用本地安装包安装 Java {requiredMajor}：{installerPath}");
+        ModBase.Log($"[PCL₃-CE] 使用本地安装包安装 Java {requiredMajor}：{installerPath}");
         try
         {
             // Oracle JDK/JRE 安装器支持 /s 静默安装到默认目录（C:\Program Files\Java\）。
@@ -232,13 +232,13 @@ public static class SymbioJavaInstaller
             // 等待安装完成（Oracle 安装器 /s 模式下进程会阻塞到安装结束）
             proc.WaitForExit();
             var exitCode = proc.ExitCode;
-            ModBase.Log($"[PCL₃] 本地 Java 安装进程退出码：{exitCode}");
+            ModBase.Log($"[PCL₃-CE] 本地 Java 安装进程退出码：{exitCode}");
             // 即使退出码非 0，也可能已部分安装；交由后续扫描判定
             return true;
         }
         catch (Exception ex)
         {
-            ModBase.Log(ex, $"[PCL₃] 运行本地安装包失败：{installerPath}");
+            ModBase.Log(ex, $"[PCL₃-CE] 运行本地安装包失败：{installerPath}");
             return false;
         }
     }
@@ -248,7 +248,7 @@ public static class SymbioJavaInstaller
     /// </summary>
     private static void DownloadJavaFromNetwork(int requiredMajor)
     {
-        ModBase.Log($"[PCL₃] 从网络下载 Java {requiredMajor}");
+        ModBase.Log($"[PCL₃-CE] 从网络下载 Java {requiredMajor}");
         if (!ModJava.JavaDownloadConfirm($"Java {requiredMajor}"))
         {
             ModBase.RunInUi(() => HintService.Hint("已取消 Java 下载。", HintType.Info));

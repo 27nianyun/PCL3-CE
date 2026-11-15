@@ -31,7 +31,7 @@ internal static class Program
             while (!Debugger.IsAttached) Thread.Sleep(50);
         }
 #endif
-        Console.WriteLine("Welcome to PCL₃!");
+        Console.WriteLine("Welcome to PCL₃-CE!");
         // Preloading tasks
         ApplicationService.Loading = static () =>
         {

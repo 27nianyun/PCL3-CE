@@ -288,7 +288,7 @@ public partial class FormMain
                 {
                     ModDownload.dlClientListMojangLoader.Start(1); // PCL 会同时根据这里的加载结果决定是否使用官方源进行下载
                     RunCountSub();
-                    // PCL₃：自更新已禁用，不再启动更新/公告加载器，防止联网下载并覆盖修改内容。
+                    // PCL₃-CE：自更新已禁用，不再启动更新/公告加载器，防止联网下载并覆盖修改内容。
                     // UpdateManager.serverLoader.Start(1);
                     ModBase.RunInNewThread(ModMain.TryClearTaskTemp, "TryClearTaskTemp", ThreadPriority.BelowNormal);
                 }

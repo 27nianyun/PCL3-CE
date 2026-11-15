@@ -4,24 +4,24 @@
 
 <img src="Plain Craft Launcher 2/Images/icon.png" alt="Logo" width="96" height="96">
 
-# 三氯化磷启动器（PCL₃）
+# 三氯化磷启动器（PCL₃-CE）
 
-[![Stars](https://img.shields.io/github/stars/27nianyun/PCL3?style=for-the-badge&logo=github&label=stars&labelColor=444444&color=eac54f)](https://github.com/27nianyun/PCL3/stargazers)
+[![Stars](https://img.shields.io/github/stars/27nianyun/PCL3-CE?style=for-the-badge&logo=github&label=stars&labelColor=444444&color=eac54f)](https://github.com/27nianyun/PCL3-CE/stargazers)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
-[下载 PCL₃](https://github.com/27nianyun/PCL3/releases) ·
-[提交问题](https://github.com/27nianyun/PCL3/issues) ·
+[下载 PCL₃-CE](https://github.com/27nianyun/PCL3-CE/releases) ·
+[提交问题](https://github.com/27nianyun/PCL3-CE/issues) ·
 [更新日志](CHANGELOG.md)
 
 </div>
 
-**三氯化磷启动器（PCL₃）** 是一款免费开源的 Minecraft 启动器，基于 PCL（Plain Craft Launcher）开源代码二次开发，在保留 PCL 原有交互习惯的基础上，补齐了基岩版支持、实例管理、资源下载、模组管理增强等能力，并加入了多项专属功能。
+**三氯化磷启动器（PCL₃-CE）** 是一款免费开源的 Minecraft 启动器，基于 PCL（Plain Craft Launcher）开源代码二次开发，在保留 PCL 原有交互习惯的基础上，补齐了基岩版支持、实例管理、资源下载、模组管理增强等能力，并加入了多项专属功能。
 
 - 当前版本：`2.17.13`
 - 上游基线：PCL `2.12.1`
 - 技术栈：C# / WPF / .NET 10
 
-> PCL₃ 与 PCL 官方版、PCL CE 官方版均无隶属关系，请勿向官方仓库反馈 PCL₃ 的问题。
+> PCL₃-CE 与 PCL 官方版、PCL CE 官方版均无隶属关系，请勿向官方仓库反馈 PCL₃-CE 的问题。
 
 ---
 
@@ -64,7 +64,7 @@
 
 ## 本分支新增功能
 
-相比上游 PCL SE，PCL₃ 额外实现了以下专属功能：
+相比上游 PCL SE，PCL₃-CE 额外实现了以下专属功能：
 
 ### 模组管理增强
 
@@ -97,9 +97,9 @@
 
 ## 下载与使用
 
-1. 从 [Releases](https://github.com/27nianyun/PCL3/releases) 下载最新版本的 `PCL₃.exe`
+1. 从 [Releases](https://github.com/27nianyun/PCL3-CE/releases) 下载最新版本的 `PCL₃-CE.exe`
 2. 放到任意目录（启动器为绿色便携版，不会写入系统目录）
-3. 运行 `PCL₃.exe`，选择 Java 版或基岩版后即可启动游戏
+3. 运行 `PCL₃-CE.exe`，选择 Java 版或基岩版后即可启动游戏
 
 > Release 中提供的为自包含单文件版本，无需额外安装 .NET 运行时。若使用框架依赖方式自行构建，则需要预先安装 [.NET 10 Desktop Runtime](https://get.dot.net/10)。
 
@@ -138,9 +138,9 @@ dotnet build "Plain Craft Launcher 2/Plain Craft Launcher 2.csproj" -c Release -
 
 ## 声明
 
-- **项目性质**：PCL₃ 是基于 PCL Community Edition（PCL CE）分支衍生的独立版本，与 LTCatt（龙腾猫跃）维护的 PCL2 官方项目、PCL-Community 维护的 PCL CE 官方项目均无隶属关系。
-- **支持范围**：PCL₃ 不支持「我的世界中国版」，也不提供与该版本相关的任何功能或适配。
-- **API 使用**：PCL₃ 仅通过经 Mojang Studios 批准的 API 访问 Minecraft 国际版的相关服务。
+- **项目性质**：PCL₃-CE 是基于 PCL Community Edition（PCL CE）分支衍生的独立版本，与 LTCatt（龙腾猫跃）维护的 PCL2 官方项目、PCL-Community 维护的 PCL CE 官方项目均无隶属关系。
+- **支持范围**：PCL₃-CE 不支持「我的世界中国版」，也不提供与该版本相关的任何功能或适配。
+- **API 使用**：PCL₃-CE 仅通过经 Mojang Studios 批准的 API 访问 Minecraft 国际版的相关服务。
 - **代码来源**：本项目不包含任何 Minecraft（含「我的世界中国版」）的代码，也不包含 Mojang Studios 及其中国代理商的任何代码。
 - **正版倡导**：我们鼓励通过官方渠道购买并游玩正版 Minecraft。
 

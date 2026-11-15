@@ -1,5 +1,5 @@
 {
-  "name": "PCL₃",
+  "name": "PCL₃-CE",
   "version": {
     "base": "2.17.13",
     "upstream": "2.12.1",
@@ -9,9 +9,9 @@
   "licenses": [
     {
       "name": "PCL.Core",
-      "info": "Copyright © PCL₃",
-      "website": "https://github.com/27nianyun/PCL3",
-      "license": "https://github.com/27nianyun/PCL3/blob/main/LICENSE"
+      "info": "Copyright © PCL₃-CE",
+      "website": "https://github.com/27nianyun/PCL3-CE",
+      "license": "https://github.com/27nianyun/PCL3-CE/blob/main/LICENSE"
     },
     {
       "name": "LegacyFix",
