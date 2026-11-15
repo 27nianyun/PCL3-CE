@@ -87,6 +87,43 @@ LeviLamina 客户端，不随本项目分发：
       按游戏版本解析、下载 lip 并执行安装
 
 ===============================================================================
+五、NuGet 依赖包
+===============================================================================
+
+本项目通过 NuGet 引入了以下第三方程序包，完整清单与许可信息可在启动器
+「关于」页面查看（由 metadata.json 生成）：
+
+  * Apache License 2.0：Dapper、protobuf-net、SQLitePCLRaw、FluentValidation
+  * MIT License：NAudio、Ae.Dns.Client、Downloader、DotNet.Glob、Unicolour、
+    CommunityToolkit.Mvvm、Microsoft.Xaml.Behaviors.Wpf、SharpZipLib、
+    YamlDotNet、System.IdentityModel.Tokens.Jwt、Lib.Harmony.Thin、
+    MonoMod.Core、PlainToolkit.CngProtectedData、Humanizer.Core.zh-CN、
+    Microsoft.Extensions.Http / Logging、Microsoft.Data.Sqlite、Sentry 等
+  * BSD-3-Clause：fNbt、Polly
+  * ISC：Lucide（含部分 MIT 内容）
+  * GPL-3.0：LegacyFix
+
+上述程序包均以各自许可证随构建产物分发，本项目未修改其代码，版权归各自
+作者所有。.NET 平台自带的运行时组件（Microsoft.CSharp、System.Management、
+System.Text.Json 等）按 Microsoft 的 MIT 许可提供，无需单独声明。
+
+===============================================================================
+六、随启动器分发的内置资源文件
+===============================================================================
+
+以下资源文件随启动器分发，其中部分来自第三方项目：
+
+  * Resources/forge-installer.jar      —— Minecraft Forge 官方安装器，按 Forge
+    项目自身的许可分发，仅用于为用户安装 Forge。
+  * Resources/java-wrapper.jar         —— Java Launch Wrapper（MIT），见 metadata.json
+  * Resources/legacyfix.jar            —— LegacyFix（GPL-3.0），见 metadata.json
+  * Resources/lwjgl-unsafe-agent.jar   —— LWJGL Unsafe Agent（Apache-2.0），见 metadata.json
+  * Resources/transformer.jar          —— 本项目的 Mixin 转换器（随 PCL 源码分发）
+  * Resources/linkd.exe                —— 目录联接工具，随 PCL 源码分发
+  * Resources/BLoader/BLoader.dll      —— BLoader（GPL-3.0），详见本文件第三节
+  * Resources/Font.ttf / mcmod.buf 等  —— 随 PCL 源码分发，许可见 PCL 原项目声明
+
+===============================================================================
 Third-Party Notices (English Summary)
 ===============================================================================
 

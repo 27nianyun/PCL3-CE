@@ -126,6 +126,102 @@
       "info": "Copyright © 2015-present Darrell Tunnell\nLicensed under the MIT license.",
       "website": "https://github.com/dazinator/DotNet.Glob",
       "license": "https://github.com/dazinator/DotNet.Glob/blob/master/LICENSE"
+    },
+    {
+      "name": "CommunityToolkit.Mvvm",
+      "info": "Copyright © .NET Foundation and Contributors\nLicensed under the MIT license.",
+      "website": "https://github.com/CommunityToolkit/dotnet",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "Microsoft.Xaml.Behaviors.Wpf",
+      "info": "Copyright © Microsoft\nLicensed under the MIT license.",
+      "website": "https://github.com/microsoft/XamlBehaviorsWpf",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "SharpZipLib",
+      "info": "Copyright © ICSharpCode\nLicensed under the MIT license.",
+      "website": "https://github.com/icsharpcode/SharpZipLib",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "SQLitePCLRaw",
+      "info": "Copyright © Eric Sink\nLicensed under the Apache-2.0 license.",
+      "website": "https://github.com/ericsink/SQLitePCL.raw",
+      "license": "https://licenses.nuget.org/Apache-2.0"
+    },
+    {
+      "name": "YamlDotNet",
+      "info": "Copyright © Antoine Aubry and Contributors\nLicensed under the MIT license.",
+      "website": "https://github.com/aaubry/YamlDotNet",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "fNbt",
+      "info": "Copyright © 2012-2025 Matvei \"fragmer\" Stefarov\nLicensed under the BSD-3-Clause license.",
+      "website": "https://github.com/mstefarov/fNbt",
+      "license": "https://licenses.nuget.org/BSD-3-Clause"
+    },
+    {
+      "name": "Polly",
+      "info": "Copyright © App vNext\nLicensed under the BSD-3-Clause license.",
+      "website": "https://github.com/App-vNext/Polly",
+      "license": "https://licenses.nuget.org/BSD-3-Clause"
+    },
+    {
+      "name": "System.IdentityModel.Tokens.Jwt",
+      "info": "Copyright © Microsoft\nLicensed under the MIT license.",
+      "website": "https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "FluentValidation",
+      "info": "Copyright © Jeremy Skinner\nLicensed under the Apache-2.0 license.",
+      "website": "https://github.com/FluentValidation/FluentValidation",
+      "license": "https://licenses.nuget.org/Apache-2.0"
+    },
+    {
+      "name": "Lib.Harmony.Thin",
+      "info": "Copyright © Andreas Pardeike\nLicensed under the MIT license.",
+      "website": "https://github.com/pardeike/Harmony",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "MonoMod.Core",
+      "info": "Copyright © MonoMod Contributors\nLicensed under the MIT license.",
+      "website": "https://github.com/MonoMod/MonoMod",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "PlainToolkit.CngProtectedData",
+      "info": "Copyright © PCL Community\nLicensed under the MIT license.",
+      "website": "https://github.com/Hill233/PlainToolkit",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "Humanizer.Core.zh-CN",
+      "info": "Copyright © Mehdi Khalili and Contributors\nLicensed under the MIT license.",
+      "website": "https://github.com/Humanizr/Humanizer",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "Microsoft.Extensions.Http",
+      "info": "Copyright © .NET Foundation and Contributors\nLicensed under the MIT license.",
+      "website": "https://github.com/dotnet/extensions",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "Microsoft.Extensions.Logging",
+      "info": "Copyright © .NET Foundation and Contributors\nLicensed under the MIT license.",
+      "website": "https://github.com/dotnet/extensions",
+      "license": "https://licenses.nuget.org/MIT"
+    },
+    {
+      "name": "Microsoft.Extensions.Logging.Abstractions",
+      "info": "Copyright © .NET Foundation and Contributors\nLicensed under the MIT license.",
+      "website": "https://github.com/dotnet/extensions",
+      "license": "https://licenses.nuget.org/MIT"
     }
   ]
 }

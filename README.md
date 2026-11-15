@@ -144,10 +144,24 @@ dotnet build "Plain Craft Launcher 2/Plain Craft Launcher 2.csproj" -c Release -
 - **代码来源**：本项目不包含任何 Minecraft（含「我的世界中国版」）的代码，也不包含 Mojang Studios 及其中国代理商的任何代码。
 - **正版倡导**：我们鼓励通过官方渠道购买并游玩正版 Minecraft。
 
-## 许可证
+## 许可证与开源合规
 
-- `Plain Craft Launcher 2/` 使用 [自定义许可证](<Plain Craft Launcher 2/LICENCE>)
-- 其余所有目录使用 [Apache License 2.0](LICENSE)
+本项目的许可证结构如下：
+
+- `Plain Craft Launcher 2/` 使用 [PCL 自定义许可证](<Plain Craft Launcher 2/LICENCE>)（《PCL 分发有限许可》+《PCL 存储库合理使用指南》）
+- 其余所有目录（`PCL.Core/`、`PCL.Core.SourceGenerators/` 等）使用 [Apache License 2.0](LICENSE)
+
+### 第三方组件合规声明
+
+本项目严格遵循各第三方组件的开源协议：
+
+- **基岩版功能**：对照移植了 Round Studio 的 [BedrockBoot](https://github.com/Round-Studio/BedrockBoot) 与 [BedrockLauncher.Core](https://github.com/Round-Studio/BedrockLauncher.Core)（均为 GPL-3.0）的部分逻辑，已在源码注释逐处标注出处，详见 [NOTICE](NOTICE)。
+- **BLoader**：随启动器分发未经修改的 BLoader.dll（GPL-3.0），完整许可证随附于 `THIRD-PARTY/BLoader/LICENSE`。
+- **LeviLamina / lip**：不随本项目分发，仅在用户选择该加载器时通过官方 lip 运行时安装。
+- **NuGet 依赖**：全部第三方程序包的清单与许可证可在启动器「关于」页面查看（由 `metadata.json` 生成）。
+- **内容密钥（CIK）**：本项目不附带、不分发任何 Xbox GDK 内容密钥。
+
+> 完整的第三方来源与许可说明见 [NOTICE](NOTICE)。
 
 ## 致谢
 
