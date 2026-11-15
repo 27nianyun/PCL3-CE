@@ -182,7 +182,7 @@ dotnet build "Plain Craft Launcher 2/Plain Craft Launcher 2.csproj" -c Release -
 - [PCL](https://github.com/Meloong-Git/PCL) — 原作者 龙腾猫跃
 - PCL CE — 社区维护分支，本项目的直接上游
 - [PCL Symbio Edition](https://github.com/Hydrogen-Peroxide/PCL-Symbio-Edition) — 本项目的基础（基岩版管理与资源下载参考）
-- [Portal Launcher](https://github.com/Portal-Launcher/PortalLauncher) — 联机 / 多人整合包同步（GPL-3.0）
+- [Portal Launcher](https://github.com/Portal-Launcher/PortalLauncher) — 联机 / 多人整合包同步（AGPL-3.0）
 - [Axolotl Launcher](https://github.com/Axolotl-Launcher/Axolotl) — 多人游戏 / 皮肤选择器 / 实验室（GPL-3.0）
 - [SeaLantern](https://github.com/SeaLantern-Studio/SeaLantern) — 自建服务器管理（AGPL-3.0）
 - [PCL2-Nex](https://github.com/PCL-Nex-Developer/PCL2-Nex) — 插件商店 / 插件扩展（Apache-2.0）
