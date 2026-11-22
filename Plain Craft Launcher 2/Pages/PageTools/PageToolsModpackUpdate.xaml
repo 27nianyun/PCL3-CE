@@ -46,6 +46,19 @@
                                           VerticalAlignment="Center" />
                     </WrapPanel>
 
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="CurseForge Key" VerticalAlignment="Center" FontSize="13" Margin="0,0,10,0" />
+                        <local:MyTextBox x:Name="TextCfKey" Grid.Column="1"
+                                         ToolTip="可选。CurseForge 整合包清单里没有直链时需要，在 console.curseforge.com 免费申请" />
+                        <local:MyButton x:Name="BtnSaveKey" Grid.Column="2" MinWidth="110" Text="保存密钥"
+                                        Margin="10,0,0,0" Click="BtnSaveKey_Click" />
+                    </Grid>
+
                     <TextBlock x:Name="LabSummary" TextWrapping="Wrap" FontSize="13" Margin="0,0,0,8"
                                Text="先选择实例和整合包，再点「对比差异」。" />
 

@@ -20,6 +20,25 @@ public partial class PageToolsModpackUpdate
         InitializeComponent();
         PageEnter += RefreshInstances;
         Loaded += (_, _) => RefreshInstances();
+        TextCfKey.Text = SymbioTools.Config.CurseForgeApiKey ?? "";
+    }
+
+    /// <summary>读取页面上的 CurseForge Key，变更时顺手持久化。</summary>
+    private string GetCurseForgeKey()
+    {
+        var key = TextCfKey.Text?.Trim() ?? "";
+        if (key == (SymbioTools.Config.CurseForgeApiKey ?? "")) return key;
+        SymbioTools.Config.CurseForgeApiKey = key;
+        SymbioTools.SaveConfig();
+        return key;
+    }
+
+    private void BtnSaveKey_Click(object sender, MouseButtonEventArgs e)
+    {
+        GetCurseForgeKey();
+        HintService.Hint(string.IsNullOrWhiteSpace(SymbioTools.Config.CurseForgeApiKey)
+            ? "已清空 CurseForge API Key。"
+            : "CurseForge API Key 已保存。", HintType.Success);
     }
 
     private void RefreshInstances()
@@ -84,12 +103,14 @@ public partial class PageToolsModpackUpdate
         LabSummary.Text = "正在计算本地文件哈希，文件较多时需要一会儿……";
         PanChanges.Children.Clear();
 
+        var curseForgeKey = GetCurseForgeKey();
+
         ModBase.RunInNewThread(() =>
         {
             ModpackUpdatePlan plan;
             try
             {
-                plan = ModModpackUpdater.BuildPlan(pack, inst);
+                plan = ModModpackUpdater.BuildPlan(pack, inst, curseForgeKey);
             }
             catch (Exception ex)
             {

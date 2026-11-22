@@ -736,6 +736,9 @@ public class SymbioToolsConfig
 
     /// <summary>资源收藏列表。</summary>
     public List<FavoriteEntry> Favorites { get; set; } = new();
+
+    /// <summary>CurseForge 官方 API Key，用于解析整合包清单里没有直链的文件。</summary>
+    public string CurseForgeApiKey { get; set; } = "";
 }
 
 /// <summary>一条资源收藏记录。</summary>

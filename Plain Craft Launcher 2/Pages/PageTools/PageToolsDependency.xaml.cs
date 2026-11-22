@@ -13,6 +13,7 @@ public partial class PageToolsDependency
 {
     private DependencyGraphResult _result;
     private bool _onlyMissing;
+    private bool _graphMode;
     private bool _busy;
 
     public PageToolsDependency()
@@ -169,7 +170,118 @@ public partial class PageToolsDependency
         }
 
         foreach (var node in nodes) PanResult.Children.Add(BuildNodeCard(node));
+
+        BuildGraph();
     }
+
+    #region 关系图
+
+    private void BtnGraph_Click(object sender, MouseButtonEventArgs e)
+    {
+        _graphMode = !_graphMode;
+        BtnGraph.Text = _graphMode ? "隐藏关系图" : "显示关系图";
+        BtnResetGraph.IsEnabled = _graphMode;
+        PanGraphHost.Visibility = _graphMode ? Visibility.Visible : Visibility.Collapsed;
+        if (_graphMode) BuildGraph();
+        else GraphView.Children.Clear();
+    }
+
+    private void BtnResetGraph_Click(object sender, MouseButtonEventArgs e) => GraphView.ResetLayout();
+
+    /// <summary>把分析结果转成分层关系图：左侧是被依赖的前置，右侧是依赖方。</summary>
+    private void BuildGraph()
+    {
+        if (!_graphMode) return;
+
+        var nodes = new List<DepGraphNode>();
+        var edges = new List<DepGraphEdge>();
+        var byModId = new Dictionary<string, DepGraphNode>(StringComparer.OrdinalIgnoreCase);
+        var missingNodes = new Dictionary<string, DepGraphNode>(StringComparer.OrdinalIgnoreCase);
+
+        if (_result is null)
+        {
+            GraphView.SetData(nodes, edges);
+            return;
+        }
+
+        var source = (_onlyMissing
+                ? _result.Nodes.Where(n => n.MissingCount > 0 || !string.IsNullOrEmpty(n.LoadError))
+                : _result.Nodes)
+            .ToList();
+
+        foreach (var mod in source)
+        {
+            var title = string.IsNullOrWhiteSpace(mod.Name) ? mod.FileName : mod.Name;
+            var subtitle = string.IsNullOrWhiteSpace(mod.Version) ? mod.FileName : mod.Version;
+            if (!string.IsNullOrEmpty(mod.LoadError)) subtitle = "解析失败：" + mod.FileName;
+            else if (mod.MissingCount > 0) subtitle += $"　缺 {mod.MissingCount} 个前置";
+
+            var node = new DepGraphNode
+            {
+                Key = "mod:" + (string.IsNullOrWhiteSpace(mod.ModId) ? mod.FileName : mod.ModId + "|" + mod.FileName),
+                Title = title,
+                Subtitle = subtitle,
+                Kind = mod.MissingCount > 0 || !string.IsNullOrEmpty(mod.LoadError)
+                    ? DepNodeKind.Warning
+                    : DepNodeKind.Normal
+            };
+
+            nodes.Add(node);
+            if (!string.IsNullOrWhiteSpace(mod.ModId) && !byModId.ContainsKey(mod.ModId))
+                byModId[mod.ModId] = node;
+        }
+
+        foreach (var mod in source)
+        {
+            var from = !string.IsNullOrWhiteSpace(mod.ModId) && byModId.TryGetValue(mod.ModId, out var hit)
+                ? hit
+                : nodes.FirstOrDefault(n => n.Key == "mod:" + mod.FileName);
+            if (from is null) continue;
+
+            foreach (var edge in mod.Edges)
+            {
+                if (edge.Satisfied)
+                {
+                    if (byModId.TryGetValue(edge.TargetId, out var target))
+                        edges.Add(new DepGraphEdge
+                        {
+                            FromKey = from.Key,
+                            ToKey = target.Key,
+                            Kind = DepEdgeKind.Satisfied,
+                            Tip = $"{from.Title} → {target.Title}"
+                        });
+                    continue;
+                }
+
+                if (edge.Optional) continue; // 可选依赖缺失不画线，避免图过密
+
+                if (!missingNodes.TryGetValue(edge.TargetId, out var missing))
+                {
+                    missing = new DepGraphNode
+                    {
+                        Key = "missing:" + edge.TargetId,
+                        Title = edge.TargetId,
+                        Subtitle = "未安装（必选前置）",
+                        Kind = DepNodeKind.Missing
+                    };
+                    missingNodes[edge.TargetId] = missing;
+                    nodes.Add(missing);
+                }
+
+                edges.Add(new DepGraphEdge
+                {
+                    FromKey = from.Key,
+                    ToKey = missing.Key,
+                    Kind = DepEdgeKind.Missing,
+                    Tip = $"{from.Title} 需要 {edge.TargetId} {edge.Constraint}".Trim()
+                });
+            }
+        }
+
+        GraphView.SetData(nodes, edges);
+    }
+
+    #endregion
 
     private MyCard BuildNodeCard(ModDepNode node)
     {
