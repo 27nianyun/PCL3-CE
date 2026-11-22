@@ -3688,6 +3688,44 @@
     <sys:String x:Key="Tools.Test.ServerQuery.Title">Check server</sys:String>
     <sys:String x:Key="Tools.Test.Title">Utilities</sys:String>
 
+    <!-- Tools.Test.Memory -->
+
+    <sys:String x:Key="Tools.Test.Memory.Description">Returns the physical memory held by the launcher back to the system. This only affects the launcher process and never touches running games or other programs.</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Failed">Optimization failed. Check the log for details.</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Process">Launcher memory in use: {0}</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Result">Released {0}; available system memory increased by {1}.</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.ResultNone">Memory is already clean - nothing left to release.</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Running">Optimizing...</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.RunningHint">Reclaiming memory, please wait...</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Start">Optimize now</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.System">Available system memory: {0} / {1}</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Title">Memory optimization</sys:String>
+
+    <!-- Tools.Test.Junk -->
+
+    <sys:String x:Key="Tools.Test.Junk.Clean">Clean now</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.CleanFailed">Cleaning failed. Check the log for details.</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Cleaned">Deleted {0} files, freed about {1}.</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.CleanedPartial">Deleted {0} files, freed about {1}; {2} item(s) were in use and skipped.</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Cleaning">Cleaning...</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.ConfirmMessage">About {0} of logs, crash reports and Natives files will be deleted. Continue?</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.ConfirmTitle">Confirm cleanup</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.DeepClean">Deep clean</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.DeepClean.ToolTip">Also clears launcher caches; PCL₃-CE will restart afterwards</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Description">Scan first, then clean. Only regenerable content such as logs, crash reports and extracted Natives is removed. Normal cleanup does not restart the launcher.</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.CrashReport">Crash reports</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.LauncherCache">Launcher cache</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.LauncherTemp">Launcher temp files</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.Log">Logs</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.Natives">Natives files</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Line">- {0}: {1} files, about {2}</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.None">All clean - nothing to remove.</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.NotScanned">Not scanned yet. Click "Scan junk" to see what can be removed.</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Scan">Scan junk</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Scanning">Scanning...</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Summary">{0} location(s), {1} files, about {2}</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Title">Game junk cleanup</sys:String>
+
     <!-- Tools.Test.Achievement -->
 
     <sys:String x:Key="Tools.Test.Achievement.FetchFailed">Failed to get achievement image. Please check for special characters.</sys:String>

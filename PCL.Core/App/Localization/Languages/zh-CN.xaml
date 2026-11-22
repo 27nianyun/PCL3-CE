@@ -3688,6 +3688,44 @@
     <sys:String x:Key="Tools.Test.ServerQuery.Title">瞅眼服务器</sys:String>
     <sys:String x:Key="Tools.Test.Title">百宝箱</sys:String>
 
+    <!-- Tools.Test.Memory -->
+
+    <sys:String x:Key="Tools.Test.Memory.Description">回收启动器自身占用的物理内存并归还给系统。该操作只作用于启动器进程，不会影响正在运行的游戏或其他程序。</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Failed">优化失败，请查看日志了解详情。</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Process">启动器当前占用：{0}</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Result">已释放 {0}，系统可用内存增加 {1}。</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.ResultNone">内存已经比较干净，没有可以释放的空间了。</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Running">优化中……</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.RunningHint">正在回收内存，请稍候……</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Start">立即优化</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.System">系统可用内存：{0} / {1}</sys:String>
+    <sys:String x:Key="Tools.Test.Memory.Title">内存优化</sys:String>
+
+    <!-- Tools.Test.Junk -->
+
+    <sys:String x:Key="Tools.Test.Junk.Clean">立即清理</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.CleanFailed">清理失败，请查看日志了解详情。</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Cleaned">已删除 {0} 个文件，释放约 {1}。</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.CleanedPartial">已删除 {0} 个文件，释放约 {1}；{2} 项被占用，已跳过。</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Cleaning">正在清理……</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.ConfirmMessage">将删除约 {0} 的日志、崩溃报告与 Natives 文件，确定继续吗？</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.ConfirmTitle">清理确认</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.DeepClean">深度清理</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.DeepClean.ToolTip">同时清理启动器缓存，清理完成后需要重启 PCL₃-CE</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Description">先扫描再清理，只删除日志、崩溃报告、Natives 解压文件等可以重新生成的内容。普通清理不需要重启启动器。</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.CrashReport">崩溃报告</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.LauncherCache">启动器缓存</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.LauncherTemp">启动器临时文件</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.Log">日志</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Kind.Natives">Natives 文件</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Line">· {0}：{1} 个文件，约 {2}</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.None">很干净，没有找到可以清理的文件。</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.NotScanned">尚未扫描。点击「扫描垃圾」查看可以清理的内容。</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Scan">扫描垃圾</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Scanning">正在扫描……</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Summary">共 {0} 处，{1} 个文件，约 {2}</sys:String>
+    <sys:String x:Key="Tools.Test.Junk.Title">游戏垃圾清理</sys:String>
+
     <!-- Tools.Test.Achievement -->
 
     <sys:String x:Key="Tools.Test.Achievement.FetchFailed">获取成就图片失败，请检查文字是否包含特殊字符</sys:String>

@@ -34,6 +34,9 @@ public partial class PageToolsTest
     private int headSize = 64;
     private string skinPath = "";
 
+    /// <summary>最近一次垃圾扫描的结果，供「立即清理」直接使用。</summary>
+    private List<RubbishItem> _junkItems = [];
+
     public PageToolsTest()
     {
         InitializeComponent();
@@ -59,6 +62,170 @@ public partial class PageToolsTest
         TextDownloadName.Validate();
         TextDownloadUrl.Validate();
         StartButtonRefresh();
+        RefreshMemoryInfo();
+    }
+
+    // —— 内存优化 ——
+
+    /// <summary>刷新内存占用展示。</summary>
+    private void RefreshMemoryInfo()
+    {
+        var snapshot = ModMemoryOptimize.GetSnapshot();
+        TextMemoryProcess.Text = Lang.Text("Tools.Test.Memory.Process",
+            ModMemoryOptimize.FormatBytes(snapshot.ProcessBytes));
+        TextMemorySystem.Text = Lang.Text("Tools.Test.Memory.System",
+            ModMemoryOptimize.FormatBytes(snapshot.AvailableBytes),
+            ModMemoryOptimize.FormatBytes(snapshot.TotalBytes));
+    }
+
+    private void BtnMemoryOptimize_Click(object sender, MouseButtonEventArgs e)
+    {
+        if (!BtnMemoryOptimize.IsEnabled) return;
+        BtnMemoryOptimize.IsEnabled = false;
+        BtnMemoryOptimize.Text = Lang.Text("Tools.Test.Memory.Running");
+        TextMemoryResult.Text = Lang.Text("Tools.Test.Memory.RunningHint");
+
+        ModBase.RunInNewThread(() =>
+        {
+            ModMemoryOptimize.MemoryResult result;
+            try
+            {
+                result = ModMemoryOptimize.Optimize();
+            }
+            catch (Exception ex)
+            {
+                ModBase.Log(ex, "内存优化失败", ModBase.LogLevel.Hint,
+                    userSummary: Lang.Text("Tools.Test.Error.OperationFailed"));
+                ModBase.RunInUi(() =>
+                {
+                    BtnMemoryOptimize.IsEnabled = true;
+                    BtnMemoryOptimize.Text = Lang.Text("Tools.Test.Memory.Start");
+                    TextMemoryResult.Text = Lang.Text("Tools.Test.Memory.Failed");
+                });
+                return;
+            }
+
+            ModBase.RunInUi(() =>
+            {
+                BtnMemoryOptimize.IsEnabled = true;
+                BtnMemoryOptimize.Text = Lang.Text("Tools.Test.Memory.Start");
+                RefreshMemoryInfo();
+                var released = Math.Max(0, result.ProcessReleasedBytes);
+                var gained = Math.Max(0, result.AvailableGainedBytes);
+                TextMemoryResult.Text = released <= 0 && gained <= 0
+                    ? Lang.Text("Tools.Test.Memory.ResultNone")
+                    : Lang.Text("Tools.Test.Memory.Result", ModMemoryOptimize.FormatBytes(released),
+                        ModMemoryOptimize.FormatBytes(gained));
+            });
+        }, "Memory Optimize");
+    }
+
+    // —— 垃圾扫描与清理 ——
+
+    private void BtnScanJunk_Click(object sender, MouseButtonEventArgs e)
+    {
+        if (!BtnScanJunk.IsEnabled) return;
+        BtnScanJunk.IsEnabled = false;
+        BtnCleanJunk.IsEnabled = false;
+        TextJunkInfo.Text = Lang.Text("Tools.Test.Junk.Scanning");
+
+        ModBase.RunInNewThread(() =>
+        {
+            List<RubbishItem> items;
+            try
+            {
+                items = ModRubbishCleaner.Scan();
+            }
+            catch (Exception ex)
+            {
+                ModBase.Log(ex, "扫描垃圾失败", ModBase.LogLevel.Hint,
+                    userSummary: Lang.Text("Tools.Test.Error.OperationFailed"));
+                items = [];
+            }
+
+            ModBase.RunInUi(() =>
+            {
+                BtnScanJunk.IsEnabled = true;
+                _junkItems = items;
+                ShowJunkItems(items);
+            });
+        }, "Junk Scan");
+    }
+
+    private void ShowJunkItems(List<RubbishItem> items)
+    {
+        if (items.Count == 0)
+        {
+            BtnCleanJunk.IsEnabled = false;
+            TextJunkInfo.Text = Lang.Text("Tools.Test.Junk.None");
+            return;
+        }
+
+        BtnCleanJunk.IsEnabled = true;
+        var lines = new List<string>
+        {
+            Lang.Text("Tools.Test.Junk.Summary", items.Count, items.Sum(i => i.FileCount),
+                ModMemoryOptimize.FormatBytes(items.Sum(i => i.Bytes)))
+        };
+        foreach (var group in items.GroupBy(i => i.Kind).OrderBy(g => (int)g.Key))
+            lines.Add(Lang.Text("Tools.Test.Junk.Line", GetKindName(group.Key), group.Sum(i => i.FileCount),
+                ModMemoryOptimize.FormatBytes(group.Sum(i => i.Bytes))));
+        TextJunkInfo.Text = string.Join(Environment.NewLine, lines);
+    }
+
+    private static string GetKindName(RubbishKind kind) => kind switch
+    {
+        RubbishKind.CrashReport => Lang.Text("Tools.Test.Junk.Kind.CrashReport"),
+        RubbishKind.Log => Lang.Text("Tools.Test.Junk.Kind.Log"),
+        RubbishKind.Natives => Lang.Text("Tools.Test.Junk.Kind.Natives"),
+        RubbishKind.LauncherTemp => Lang.Text("Tools.Test.Junk.Kind.LauncherTemp"),
+        RubbishKind.LauncherCache => Lang.Text("Tools.Test.Junk.Kind.LauncherCache"),
+        _ => kind.ToString()
+    };
+
+    private void BtnCleanJunk_Click(object sender, MouseButtonEventArgs e)
+    {
+        if (_junkItems.Count == 0) return;
+        var total = ModMemoryOptimize.FormatBytes(_junkItems.Sum(i => i.Bytes));
+        if (ModMain.MyMsgBox(Lang.Text("Tools.Test.Junk.ConfirmMessage", total),
+                Lang.Text("Tools.Test.Junk.ConfirmTitle"), Lang.Text("Common.Action.Confirm"),
+                Lang.Text("Common.Action.Cancel")) == 2) return;
+
+        BtnCleanJunk.IsEnabled = false;
+        BtnScanJunk.IsEnabled = false;
+        TextJunkInfo.Text = Lang.Text("Tools.Test.Junk.Cleaning");
+
+        ModBase.RunInNewThread(() =>
+        {
+            RubbishResult result;
+            try
+            {
+                result = ModRubbishCleaner.Clean(_junkItems);
+            }
+            catch (Exception ex)
+            {
+                ModBase.Log(ex, "清理垃圾失败", ModBase.LogLevel.Hint,
+                    userSummary: Lang.Text("Tools.Test.Error.OperationFailed"));
+                ModBase.RunInUi(() =>
+                {
+                    BtnScanJunk.IsEnabled = true;
+                    BtnCleanJunk.IsEnabled = true;
+                    TextJunkInfo.Text = Lang.Text("Tools.Test.Junk.CleanFailed");
+                });
+                return;
+            }
+
+            ModBase.RunInUi(() =>
+            {
+                BtnScanJunk.IsEnabled = true;
+                _junkItems = [];
+                TextJunkInfo.Text = result.FailedCount > 0
+                    ? Lang.Text("Tools.Test.Junk.CleanedPartial", result.FileCount,
+                        ModMemoryOptimize.FormatBytes(result.Bytes), result.FailedCount)
+                    : Lang.Text("Tools.Test.Junk.Cleaned", result.FileCount,
+                        ModMemoryOptimize.FormatBytes(result.Bytes));
+            });
+        }, "Junk Clean");
     }
 
     private void StartButtonRefresh()

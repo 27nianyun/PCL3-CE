@@ -9,9 +9,6 @@
         <StackPanel x:Name="PanMain" Margin="25,10" Grid.IsSharedSizeScope="True">
             <local:MyCard Margin="0,15" Title="{DynamicResource Tools.Test.Title}">
                 <WrapPanel Margin="25,40,21,5" ItemHeight="50">
-                    <local:MyButton x:Name="BtnClear" MinWidth="120" Text="{DynamicResource Tools.Test.Clean.Title}"
-                                    ToolTip="{DynamicResource Tools.Test.Clean.ToolTip}" Margin="0,0,15,15"
-                                    Click="BtnClear_Click" />
                     <local:MyButton MinWidth="100" Text="{DynamicResource Tools.Test.Luck.Title}" Margin="0,0,15,15"
                                     Click="BtnLuck_Click" />
                     <local:MyButton MinWidth="100" Text="{DynamicResource Tools.Test.Crash.Title}"
@@ -24,6 +21,45 @@
                     <local:MyButton MinWidth="120" Text="{DynamicResource Tools.Test.LaunchCount.Title}"
                                     Margin="0,0,15,15" Click="BtnLaunchCount_Click" />
                 </WrapPanel>
+            </local:MyCard>
+            <local:MyCard Margin="0,0,0,15" Title="{DynamicResource Tools.Test.Memory.Title}">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock Text="{DynamicResource Tools.Test.Memory.Description}" TextWrapping="Wrap" />
+                    <Grid Margin="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" Margin="0,0,15,0">
+                            <TextBlock x:Name="TextMemoryProcess" FontWeight="SemiBold" TextWrapping="Wrap" />
+                            <TextBlock x:Name="TextMemorySystem" Margin="0,4,0,0" Opacity="0.75" TextWrapping="Wrap" />
+                            <TextBlock x:Name="TextMemoryResult" Margin="0,4,0,0" Opacity="0.75"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                        <local:MyButton x:Name="BtnMemoryOptimize" Grid.Column="1" MinWidth="140"
+                                        VerticalAlignment="Center" ColorType="Highlight"
+                                        Text="{DynamicResource Tools.Test.Memory.Start}"
+                                        Click="BtnMemoryOptimize_Click" />
+                    </Grid>
+                </StackPanel>
+            </local:MyCard>
+            <local:MyCard Margin="0,0,0,15" Title="{DynamicResource Tools.Test.Junk.Title}">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock Text="{DynamicResource Tools.Test.Junk.Description}" TextWrapping="Wrap" />
+                    <TextBlock x:Name="TextJunkInfo" Margin="0,12,0,0" Opacity="0.75" TextWrapping="Wrap"
+                               Text="{DynamicResource Tools.Test.Junk.NotScanned}" />
+                    <WrapPanel Margin="0,15,0,0" ItemHeight="35">
+                        <local:MyButton x:Name="BtnScanJunk" MinWidth="120" Margin="0,0,15,0"
+                                        Text="{DynamicResource Tools.Test.Junk.Scan}" Click="BtnScanJunk_Click" />
+                        <local:MyButton x:Name="BtnCleanJunk" MinWidth="120" Margin="0,0,15,0" IsEnabled="False"
+                                        ColorType="Highlight" Text="{DynamicResource Tools.Test.Junk.Clean}"
+                                        Click="BtnCleanJunk_Click" />
+                        <local:MyButton x:Name="BtnClear" MinWidth="140" ColorType="Red"
+                                        Text="{DynamicResource Tools.Test.Junk.DeepClean}"
+                                        ToolTip="{DynamicResource Tools.Test.Junk.DeepClean.ToolTip}"
+                                        Click="BtnClear_Click" />
+                    </WrapPanel>
+                </StackPanel>
             </local:MyCard>
             <local:MyCard Margin="0,0,0,15" Title="{DynamicResource Tools.Test.Unlock.Title}">
                 <StackPanel Orientation="Vertical" Margin="25,40,25,20">
