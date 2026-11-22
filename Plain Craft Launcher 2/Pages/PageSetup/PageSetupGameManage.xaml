@@ -183,7 +183,7 @@
                         <local:MyComboBoxItem Content="2" />
                         <local:MyComboBoxItem Content="3" />
                         <local:MyComboBoxItem Content="4" />
-                        <local:MyComboBoxItem Content="5" IsSelected="True" />
+                        <local:MyComboBoxItem Content="5" />
                         <local:MyComboBoxItem Content="6" />
                         <local:MyComboBoxItem Content="7" />
                         <local:MyComboBoxItem Content="8" />
