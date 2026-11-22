@@ -193,6 +193,7 @@ public class MyDependencyGraph : Canvas
     private void Render()
     {
         Children.Clear();
+        _dragNode = null;
         if (!_layoutDone) return;
 
         foreach (var edge in _edges)

@@ -115,6 +115,7 @@ public partial class PageToolsDependency
     {
         PanResult.Children.Clear();
         PanMissing.Children.Clear();
+        BuildGraph();
 
         var loader = string.IsNullOrWhiteSpace(_result.Loader) ? "原版" : _result.Loader;
         var totalEdges = _result.Nodes.Sum(n => n.Edges.Count);
@@ -170,8 +171,6 @@ public partial class PageToolsDependency
         }
 
         foreach (var node in nodes) PanResult.Children.Add(BuildNodeCard(node));
-
-        BuildGraph();
     }
 
     #region 关系图
