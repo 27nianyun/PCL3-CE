@@ -175,6 +175,20 @@ dotnet build "Plain Craft Launcher 2/Plain Craft Launcher 2.csproj" -c Release -
 - **NuGet 依赖**：全部第三方程序包的清单与许可证可在启动器「关于」页面查看（由 `metadata.json` 生成）。
 - **内容密钥（CIK）**：本项目不附带、不分发任何 Xbox GDK 内容密钥。
 
+### 参考的启动器项目
+
+以下项目仅作为功能设计与实现思路的参考，当前源码中不包含它们的代码：
+
+| 项目 | 用途 | 许可证（以 LICENSE 文件为准） |
+|---|---|---|
+| [PCL Symbio Edition](https://github.com/Hydrogen-Peroxide/PCL-Symbio-Edition) | 本项目的基础 | PCL 自定义许可 + Apache-2.0 |
+| [Portal Launcher](https://github.com/Portal-Launcher/PortalLauncher) | 联机 / 多人整合包同步 | AGPL-3.0（子模块 `src/Portal.Bedrock.Injector/` 为 Apache-2.0） |
+| [Axolotl Launcher](https://github.com/Axolotl-Launcher/Axolotl) | 多人游戏 / 皮肤选择器 / 实验室 | GPL-3.0 |
+| [SeaLantern](https://github.com/SeaLantern-Studio/SeaLantern) | 自建服务器管理 | AGPL-3.0 |
+| [PCL2-Nex](https://github.com/PCL-Nex-Developer/PCL2-Nex) | 插件商店 / 插件扩展 | Apache-2.0 |
+
+> ⚠️ **copyleft 提示**：Portal Launcher、Axolotl Launcher 与 SeaLantern 均属强 copyleft（AGPL-3.0 / GPL-3.0）。若日后直接复制或翻译其源代码，相应部分必须改以对应的 GPL / AGPL 许可证开源，不能继续沿用 Apache-2.0；AGPL 还要求通过网络提供服务时同样提供源码。本项目坚持「读思路 + 独立实现」，并在必要处于源码注释标注出处。
+
 > 完整的第三方来源与许可说明见 [NOTICE](NOTICE)。
 
 ## 致谢

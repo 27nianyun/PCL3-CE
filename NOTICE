@@ -135,7 +135,7 @@ System.Text.Json 等）按 Microsoft 的 MIT 许可提供，无需单独声明�
 
   * Portal Launcher（联机 / 多人整合包同步）
     https://github.com/Portal-Launcher/PortalLauncher
-    License: GNU Affero General Public License v3.0
+    License: GNU Affero General Public License v3.0（混合许可，详见下方说明）
 
   * Axolotl Launcher（多人游戏 / 皮肤选择器 / 实验室）
     https://github.com/Axolotl-Launcher/Axolotl
@@ -151,6 +151,23 @@ System.Text.Json 等）按 Microsoft 的 MIT 许可提供，无需单独声明�
 
 本项目仅参考上述项目的功能设计与部分实现思路，相关著作权归各项目作者
 所有；若直接移植了代码，已在源码注释中逐处标注出处。
+
+关于 Portal Launcher 的混合许可说明：
+  Portal Launcher 主仓库根目录 LICENSE 为 GNU AGPL-3.0，但其子模块
+  src/Portal.Bedrock.Injector/ 单独采用 Apache License 2.0。本文件以各目录
+  实际 LICENSE 文件为准记录，不采用其 README 中标注的 GPL-3.0-or-later
+  badge（与 LICENSE 文件不一致）。
+
+关于 SeaLantern 的许可说明：
+  SeaLantern 的 LICENSE 与 README 均声明 AGPL-3.0；其 NOTICE 文件内使用了
+  GPL-3.0 的模板文本，属上游笔误。本文件以其 LICENSE 文件为准，记为 AGPL-3.0。
+
+注意（copyleft 提示）：
+  Portal Launcher 与 SeaLantern 均为 AGPL-3.0，Axolotl Launcher 为 GPL-3.0。
+  上述项目均为强 copyleft 许可，若本项目直接复制或翻译其源代码，相应部分
+  须以对应的 GPL / AGPL 许可证开源，不能继续沿用 Apache-2.0；AGPL 还要求
+  通过网络提供服务时同样提供源码。本项目目前仅参考其设计思路并独立实现，
+  不包含上述项目的源代码。
 
 ===============================================================================
 Third-Party Notices (English Summary)
@@ -182,3 +199,29 @@ is licensed under GPL-3.0, not under this project's Apache-2.0 / custom terms.
 
 No Xbox GDK Content Integrity Keys (CIK) are bundled or distributed with this
 project. They must be supplied at build time via environment variables.
+
+-------------------------------------------------------------------------------
+Referenced launcher projects (design reference only)
+-------------------------------------------------------------------------------
+
+The following open-source launcher projects were consulted for feature design
+and implementation ideas. No source code from these projects is currently
+included in this repository:
+
+  * PCL Symbio Edition - https://github.com/Hydrogen-Peroxide/PCL-Symbio-Edition
+    License: PCL custom license + Apache-2.0 (this project's base)
+  * Portal Launcher - https://github.com/Portal-Launcher/PortalLauncher
+    License: AGPL-3.0 (root LICENSE; src/Portal.Bedrock.Injector/ is Apache-2.0)
+  * Axolotl Launcher - https://github.com/Axolotl-Launcher/Axolotl
+    License: GPL-3.0
+  * SeaLantern - https://github.com/SeaLantern-Studio/SeaLantern
+    License: AGPL-3.0
+  * PCL2-Nex - https://github.com/PCL-Nex-Developer/PCL2-Nex
+    License: Apache-2.0 (Plain Craft Launcher 2 directory: PCL custom license)
+
+Caution: Portal Launcher, Axolotl Launcher and SeaLantern are strong copyleft
+projects. Any code copied or translated from them must be released under the
+corresponding GPL/AGPL license instead of Apache-2.0. AGPL additionally requires
+offering source code to users interacting with the software over a network.
+
+Copyright in all referenced projects belongs to their respective authors.
