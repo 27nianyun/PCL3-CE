@@ -17,7 +17,7 @@
 
 **三氯化磷启动器（PCL₃-CE）** 是一款免费开源的 Minecraft 启动器，基于 PCL（Plain Craft Launcher）开源代码二次开发，在保留 PCL 原有交互习惯的基础上，补齐了基岩版支持、实例管理、资源下载、模组管理增强等能力，并加入了多项专属功能。
 
-- 当前版本：`2.17.16`
+- 当前版本：`2.17.17`
 - 上游基线：PCL `2.12.1`
 - 技术栈：C# / WPF / .NET 10
 
@@ -201,7 +201,9 @@ dotnet build "Plain Craft Launcher 2/Plain Craft Launcher 2.csproj" -c Release -
 
 本项目严格遵循各第三方组件的开源协议：
 
-- **基岩版功能**：对照移植了 Round Studio 的 [BedrockBoot](https://github.com/Round-Studio/BedrockBoot) 与 [BedrockLauncher.Core](https://github.com/Round-Studio/BedrockLauncher.Core)（均为 GPL-3.0）的部分逻辑，已在源码注释逐处标注出处，详见 [NOTICE](NOTICE)。
+- **基岩版功能来源**：本项目的 Minecraft 基岩版（Bedrock Edition）相关功能，包括 UWP / GDK 版本识别、安装包解析与解密、版本隔离、启动流程与模组加载，均来自 [PCL-SE（PCL Symbio Edition）](https://github.com/Hydrogen-Peroxide/PCL-Symbio-Edition) 的开发与实现，本项目在其基础上继续维护。
+- **侵权联系删除**：若相关权利方（包括但不限于 Round Studio、Mojang Studios、Microsoft 或任何个人与组织）认为基岩版相关实现侵犯了其合法权益，请通过 [GitHub Issues](https://github.com/27nianyun/PCL3-CE/issues) 联系我们；我们承诺在核实后**立即删除相关代码与功能**，不以任何形式继续分发。该声明同时显示于启动器「设置 → 软件信息」与「基岩版」页面底部。
+- **基岩版参考实现**：对照移植了 Round Studio 的 [BedrockBoot](https://github.com/Round-Studio/BedrockBoot) 与 [BedrockLauncher.Core](https://github.com/Round-Studio/BedrockLauncher.Core)（均为 GPL-3.0）的部分逻辑，已在源码注释逐处标注出处，详见 [NOTICE](NOTICE)。
 - **BLoader**：随启动器分发未经修改的 BLoader.dll（GPL-3.0），完整许可证随附于 `THIRD-PARTY/BLoader/LICENSE`。
 - **LeviLamina / lip**：不随本项目分发，仅在用户选择该加载器时通过官方 lip 运行时安装。
 - **NuGet 依赖**：全部第三方程序包的清单与许可证可在启动器「关于」页面查看（由 `metadata.json` 生成）。

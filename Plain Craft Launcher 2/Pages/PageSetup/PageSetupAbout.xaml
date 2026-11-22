@@ -323,6 +323,16 @@
                         LineHeight="17"
                         Text="{DynamicResource Setup.About.Legal.CopyrightText}"
                         TextWrapping="Wrap" />
+                    <TextBlock
+                        Margin="0,12,0,4"
+                        FontWeight="Bold"
+                        Text="{DynamicResource Setup.About.Legal.BedrockTitle}"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        Margin="0,0,0,2"
+                        LineHeight="17"
+                        Text="{DynamicResource Setup.About.Legal.BedrockText}"
+                        TextWrapping="Wrap" />
                     <StackPanel
                         Height="35"
                         Margin="0,12,0,0"
@@ -331,10 +341,16 @@
                         <local:MyButton
                             Margin="0,0,20,0"
                             ColorType="Highlight"
-                            local:CustomEventService.EventData=""
+                            local:CustomEventService.EventData="https://github.com/27nianyun/PCL3-CE"
                             local:CustomEventService.EventType="OpenUrl"
                             Padding="13,0"
                             Text="{DynamicResource Setup.About.Legal.CommunitySource}" />
+                        <local:MyButton
+                            Margin="0,0,20,0"
+                            local:CustomEventService.EventData="https://github.com/27nianyun/PCL3-CE/issues"
+                            local:CustomEventService.EventType="OpenUrl"
+                            Padding="13,0"
+                            Text="{DynamicResource Setup.About.Legal.ContactUs}" />
                     </StackPanel>
                 </StackPanel>
             </local:MyCard>

@@ -119,7 +119,11 @@ public static partial class Config
         /// <summary>
         /// 自动更新行为。
         /// </summary>
-        [ConfigItem<LauncherAutoUpdateBehavior>("SystemSystemUpdate", LauncherAutoUpdateBehavior.DownloadAndAnnounce, ConfigSource.Local)] public partial LauncherAutoUpdateBehavior UpdateMode { get; set; }
+        /// <remarks>
+        ///     默认值为 <see cref="LauncherAutoUpdateBehavior.AnnounceOnly" />：只检查并提示有新版本，
+        ///     不自动下载、不自动安装，由用户手动决定是否更新。
+        /// </remarks>
+        [ConfigItem<LauncherAutoUpdateBehavior>("SystemSystemUpdate", LauncherAutoUpdateBehavior.AnnounceOnly, ConfigSource.Local)] public partial LauncherAutoUpdateBehavior UpdateMode { get; set; }
 
         /// <summary>
         /// 更新分支。

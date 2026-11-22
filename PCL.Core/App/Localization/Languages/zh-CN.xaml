@@ -65,6 +65,7 @@
     <sys:String x:Key="Bedrock.Download.ResolveFailedSummary">基岩版 {0} 下载地址解析失败: {1}</sys:String>
     <sys:String x:Key="Bedrock.Download.SourceLabel">版本数据来源于</sys:String>
     <sys:String x:Key="Bedrock.Download.Started">基岩版 {0} 下载已开始 ({1} 源)</sys:String>
+    <sys:String x:Key="Bedrock.SourceNotice">基岩版相关功能（安装、启动、版本隔离、模组加载等）由 PCL-SE（PCL-Symbio-Edition）开发并提供实现参考。&#xA;若相关权利方认为此处存在侵权，请通过 GitHub Issues 联系我们，核实后我们会立即删除相关内容。</sys:String>
     <sys:String x:Key="Bedrock.Download.Title">下载基岩版</sys:String>
     <sys:String x:Key="Bedrock.Editor.Failed">打开编辑器失败，请确认已安装基岩版正式版或预览版，也可以从 Minecraft 启动器的 Creator Tools 中打开。</sys:String>
     <sys:String x:Key="Bedrock.Editor.NotInstalled">未检测到基岩版，请先在右侧下载并安装后再打开编辑器。</sys:String>
@@ -2871,6 +2872,9 @@
 
     <!-- Setup.About.Legal -->
 
+    <sys:String x:Key="Setup.About.Legal.ContactUs">联系我们</sys:String>
+    <sys:String x:Key="Setup.About.Legal.BedrockText">本软件的基岩版（Minecraft: Bedrock Edition）相关功能，包括安装、启动、版本隔离与模组加载，均由 PCL-SE（PCL-Symbio-Edition）开发或提供实现参考。&#xD;若相关权利方认为此处的实现方式侵犯了其合法权益，请通过 GitHub Issues 与我们联系，我们会在核实后立即删除相关内容。&#xD;联系地址：https://github.com/27nianyun/PCL3-CE/issues</sys:String>
+    <sys:String x:Key="Setup.About.Legal.BedrockTitle">基岩版来源声明</sys:String>
     <sys:String x:Key="Setup.About.Legal.CommunitySource">PCL₃-CE 开源代码</sys:String>
     <sys:String x:Key="Setup.About.Legal.CopyrightText">Copyright © 2026 PCL₃-CE &amp; 龙腾猫跃.&#xD;非 MINECRAFT 官方产品。未经 MOJANG 或 MICROSOFT 批准，也不与 MOJANG 或 MICROSOFT 关联。</sys:String>
     <sys:String x:Key="Setup.About.Legal.OtherInfo">其他信息</sys:String>

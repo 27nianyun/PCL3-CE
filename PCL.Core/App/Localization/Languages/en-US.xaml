@@ -65,6 +65,7 @@
     <sys:String x:Key="Bedrock.Download.ResolveFailedSummary">Failed to resolve the download URL for Bedrock {0}: {1}</sys:String>
     <sys:String x:Key="Bedrock.Download.SourceLabel">Version data from</sys:String>
     <sys:String x:Key="Bedrock.Download.Started">Bedrock {0} download started ({1} sources)</sys:String>
+    <sys:String x:Key="Bedrock.SourceNotice">Bedrock Edition features (installation, launching, version isolation and mod loading) were developed by PCL-SE (PCL-Symbio-Edition) and are used here for reference.&#xA;If any rights holder believes this infringes their rights, please contact us via GitHub Issues and we will remove the relevant content immediately after verification.</sys:String>
     <sys:String x:Key="Bedrock.Download.Title">Download Bedrock</sys:String>
     <sys:String x:Key="Bedrock.Editor.Failed">Could not open the Editor. Make sure Bedrock Retail or Preview is installed, or open it from the Creator Tools tab in the Minecraft Launcher.</sys:String>
     <sys:String x:Key="Bedrock.Editor.NotInstalled">Bedrock was not detected. Download and install it on the right before opening the Editor.</sys:String>
@@ -2871,6 +2872,9 @@
 
     <!-- Setup.About.Legal -->
 
+    <sys:String x:Key="Setup.About.Legal.ContactUs">Contact us</sys:String>
+    <sys:String x:Key="Setup.About.Legal.BedrockText">The Bedrock Edition (Minecraft: Bedrock Edition) features of this software, including installation, launching, version isolation and mod loading, were developed by PCL-SE (PCL-Symbio-Edition) or use its implementation as a reference.&#xD;If any rights holder believes this implementation infringes their lawful rights, please contact us via GitHub Issues and we will remove the relevant content immediately after verification.&#xD;Contact: https://github.com/27nianyun/PCL3-CE/issues</sys:String>
+    <sys:String x:Key="Setup.About.Legal.BedrockTitle">Bedrock Edition attribution</sys:String>
     <sys:String x:Key="Setup.About.Legal.CommunitySource">PCL₃-CE source code</sys:String>
     <sys:String x:Key="Setup.About.Legal.CopyrightText">Copyright © PCL₃-CE &amp; LTCat (龙腾猫跃) 2026.&#xD;NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</sys:String>
     <sys:String x:Key="Setup.About.Legal.OtherInfo">Other information</sys:String>

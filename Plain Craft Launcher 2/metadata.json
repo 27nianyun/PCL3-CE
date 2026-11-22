@@ -1,10 +1,10 @@
 {
   "name": "PCL₃-CE",
   "version": {
-    "base": "2.17.16",
+    "base": "2.17.17",
     "upstream": "2.12.1",
     "suffix": "",
-    "code": 541
+    "code": 542
   },
   "licenses": [
     {
