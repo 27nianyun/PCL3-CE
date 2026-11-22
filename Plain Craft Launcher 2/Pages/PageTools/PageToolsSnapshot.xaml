@@ -1,0 +1,76 @@
+<local:MyPageRight x:Class="PCL.PageToolsSnapshot"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:local="clr-namespace:PCL"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d"
+                   PanScroll="{Binding ElementName=PanBack}">
+    <local:MyScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="PanBack">
+        <StackPanel x:Name="PanMain" Margin="25,10" Grid.IsSharedSizeScope="True">
+
+            <local:MyCard Margin="0,15" Title="创建环境还原点">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="13"
+                               Foreground="{DynamicResource ColorBrushGray3}"
+                               Text="把当前实例的游戏版本、加载器、模组与配置打包成快照。以后换模组、升级整合包出了问题，可以整套恢复到这个状态；快照不包含存档，恢复环境不会让存档进度回退。" />
+
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="目标实例" VerticalAlignment="Center" FontSize="13" Margin="0,0,10,0" />
+                        <local:MyComboBox x:Name="ComboInstance" Grid.Column="1" Height="34"
+                                          HorizontalAlignment="Stretch" />
+                    </Grid>
+
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="名称" VerticalAlignment="Center" FontSize="13" Margin="0,0,10,0" />
+                        <local:MyTextBox x:Name="TextSnapshotName" Grid.Column="1" MaxLength="60" />
+                    </Grid>
+
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="备注" VerticalAlignment="Center" FontSize="13" Margin="0,0,10,0" />
+                        <local:MyTextBox x:Name="TextSnapshotNote" Grid.Column="1" MaxLength="120" />
+                    </Grid>
+
+                    <local:MyCheckBox x:Name="CheckIncludeConfig" Text="同时备份 config 配置目录" Checked="True"
+                                      Margin="0,0,0,12" />
+
+                    <WrapPanel>
+                        <local:MyButton x:Name="BtnCreateSnapshot" MinWidth="180" Text="创建当前环境还原点"
+                                        ColorType="Highlight" Margin="0,0,12,0" Click="BtnCreateSnapshot_Click" />
+                        <local:MyButton x:Name="BtnOpenSnapshotFolder" MinWidth="140" Text="打开快照文件夹"
+                                        Click="BtnOpenSnapshotFolder_Click" />
+                    </WrapPanel>
+                </StackPanel>
+            </local:MyCard>
+
+            <local:MyCard Margin="0,0,0,15" Title="已有还原点">
+                <StackPanel Margin="25,40,25,20">
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="LabSnapshotSummary" VerticalAlignment="Center" FontSize="13"
+                                   TextWrapping="Wrap" Text="正在读取……" />
+                        <local:MyButton x:Name="BtnRefreshSnapshots" Grid.Column="1" MinWidth="100" Text="刷新"
+                                        Click="BtnRefreshSnapshots_Click" />
+                    </Grid>
+                    <StackPanel x:Name="PanSnapshotList" />
+                </StackPanel>
+            </local:MyCard>
+
+        </StackPanel>
+    </local:MyScrollViewer>
+</local:MyPageRight>

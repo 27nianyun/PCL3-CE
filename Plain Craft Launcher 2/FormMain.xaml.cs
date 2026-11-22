@@ -1498,6 +1498,10 @@ public partial class FormMain
         ToolsWheel = 15,
         ToolsModMatch = 16,
         ToolsTest = 3,
+        ToolsSnapshot = 17,
+        ToolsDependency = 18,
+        ToolsFavorites = 19,
+        ToolsModpackUpdate = 20,
 
         VersionOverall = 0,
         VersionSetup = 1,

@@ -22,6 +22,10 @@ public partial class PageToolsLeft
     private PageToolsLabs? frmLabs;
     private PageToolsWheel? frmWheel;
     private PageToolsModMatch? frmModMatch;
+    private PageToolsSnapshot? frmSnapshot;
+    private PageToolsDependency? frmDependency;
+    private PageToolsFavorites? frmFavorites;
+    private PageToolsModpackUpdate? frmModpackUpdate;
 
     public PageToolsLeft()
     {
@@ -205,6 +209,26 @@ public partial class PageToolsLeft
             {
                 frmModMatch ??= new PageToolsModMatch();
                 return frmModMatch;
+            }
+            case FormMain.PageSubType.ToolsSnapshot:
+            {
+                frmSnapshot ??= new PageToolsSnapshot();
+                return frmSnapshot;
+            }
+            case FormMain.PageSubType.ToolsDependency:
+            {
+                frmDependency ??= new PageToolsDependency();
+                return frmDependency;
+            }
+            case FormMain.PageSubType.ToolsFavorites:
+            {
+                frmFavorites ??= new PageToolsFavorites();
+                return frmFavorites;
+            }
+            case FormMain.PageSubType.ToolsModpackUpdate:
+            {
+                frmModpackUpdate ??= new PageToolsModpackUpdate();
+                return frmModpackUpdate;
             }
             default:
             {

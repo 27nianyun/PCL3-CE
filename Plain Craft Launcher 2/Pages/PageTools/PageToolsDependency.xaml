@@ -1,0 +1,54 @@
+<local:MyPageRight x:Class="PCL.PageToolsDependency"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:local="clr-namespace:PCL"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d"
+                   PanScroll="{Binding ElementName=PanBack}">
+    <local:MyScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="PanBack">
+        <StackPanel x:Name="PanMain" Margin="25,10" Grid.IsSharedSizeScope="True">
+
+            <local:MyCard Margin="0,15" Title="模组依赖图谱">
+                <StackPanel Margin="25,40,25,20">
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="13"
+                               Foreground="{DynamicResource ColorBrushGray3}"
+                               Text="读取所选实例 mods 目录中每个模组的依赖声明，建立「谁依赖谁」的关系，并检查必选前置是否缺失、版本是否满足。启动游戏前用它体检一遍，可以提前发现缺少前置导致的崩溃。" />
+
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="目标实例" VerticalAlignment="Center" FontSize="13" Margin="0,0,10,0" />
+                        <local:MyComboBox x:Name="ComboInstance" Grid.Column="1" Height="34"
+                                          HorizontalAlignment="Stretch" />
+                    </Grid>
+
+                    <WrapPanel Margin="0,0,0,12">
+                        <local:MyButton x:Name="BtnAnalyze" MinWidth="160" Text="分析依赖关系"
+                                        ColorType="Highlight" Margin="0,0,12,0" Click="BtnAnalyze_Click" />
+                        <local:MyButton x:Name="BtnOnlyMissing" MinWidth="120" Text="只看缺失前置"
+                                        Margin="0,0,12,0" Click="BtnOnlyMissing_Click" />
+                        <local:MyButton x:Name="BtnOpenMods" MinWidth="120" Text="打开 mods 目录"
+                                        Click="BtnOpenMods_Click" />
+                    </WrapPanel>
+
+                    <TextBlock x:Name="LabSummary" TextWrapping="Wrap" FontSize="13" Margin="0,0,0,8" />
+
+                    <Border x:Name="BorderMissing" Visibility="Collapsed" Margin="0,4,0,8" Padding="14,10"
+                            CornerRadius="5" Background="#22E54A4A">
+                        <StackPanel>
+                            <TextBlock x:Name="LabMissingTitle" FontWeight="SemiBold" FontSize="13"
+                                       Foreground="#FFE54A4A" Margin="0,0,0,6" Text="缺失的必选前置" />
+                            <StackPanel x:Name="PanMissing" />
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel x:Name="PanResult" />
+                </StackPanel>
+            </local:MyCard>
+
+        </StackPanel>
+    </local:MyScrollViewer>
+</local:MyPageRight>

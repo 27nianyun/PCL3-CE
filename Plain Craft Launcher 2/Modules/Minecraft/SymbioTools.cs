@@ -69,6 +69,98 @@ public static class SymbioTools
 
     #endregion
 
+    #region 资源收藏
+
+    /// <summary>全部收藏（按添加时间倒序返回副本）。</summary>
+    public static List<FavoriteEntry> GetFavorites() =>
+        Config.Favorites.OrderByDescending(f => f.AddedAt).ToList();
+
+    /// <summary>新增收藏；同类型下 Id 重复时返回 false。</summary>
+    public static bool AddFavorite(FavoriteEntry entry)
+    {
+        if (entry is null || string.IsNullOrWhiteSpace(entry.Name)) return false;
+        if (string.IsNullOrWhiteSpace(entry.Id)) entry.Id = entry.Name.Trim().ToLowerInvariant();
+        if (Config.Favorites.Any(f =>
+                string.Equals(f.Id, entry.Id, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(f.Type, entry.Type, StringComparison.OrdinalIgnoreCase)))
+            return false;
+
+        entry.AddedAt = DateTime.Now;
+        Config.Favorites.Add(entry);
+        SaveConfig();
+        return true;
+    }
+
+    /// <summary>删除收藏。</summary>
+    public static void RemoveFavorite(FavoriteEntry entry)
+    {
+        if (entry is null) return;
+        Config.Favorites.RemoveAll(f =>
+            string.Equals(f.Id, entry.Id, StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(f.Type, entry.Type, StringComparison.OrdinalIgnoreCase));
+        SaveConfig();
+    }
+
+    /// <summary>收藏类型的中文标签。</summary>
+    public static string FavoriteTypeLabel(string type) => type switch
+    {
+        "mod" => "模组",
+        "modpack" => "整合包",
+        "shader" => "光影",
+        "datapack" => "数据包",
+        "resourcepack" => "资源包",
+        _ => "其他"
+    };
+
+    /// <summary>
+    ///     判断收藏项是否已安装在指定实例中（按文件名 / 模组名做模糊匹配）。
+    ///     用于让收藏页与本地下载区状态保持同步。
+    /// </summary>
+    public static bool IsFavoriteInstalled(McInstance instance, FavoriteEntry entry)
+    {
+        if (instance is null || entry is null) return false;
+        try
+        {
+            var modsFolder = GetSubFolder(instance, "mods");
+            if (Directory.Exists(modsFolder))
+            {
+                var key = (string.IsNullOrWhiteSpace(entry.Id) ? entry.Name : entry.Id).ToLowerInvariant();
+                foreach (var file in Directory.EnumerateFiles(modsFolder, "*.jar", SearchOption.TopDirectoryOnly))
+                {
+                    var name = Path.GetFileNameWithoutExtension(file).ToLowerInvariant();
+                    if (name.Contains(key) || key.Contains(name)) return true;
+                }
+            }
+
+            switch (entry.Type)
+            {
+                case "shader":
+                    return Directory.Exists(GetSubFolder(instance, "shaderpacks")) &&
+                           Directory.EnumerateFileSystemEntries(GetSubFolder(instance, "shaderpacks"))
+                               .Any(p => Path.GetFileNameWithoutExtension(p).ToLowerInvariant()
+                                   .Contains(entry.Id.ToLowerInvariant()));
+                case "resourcepack":
+                    return Directory.Exists(GetSubFolder(instance, "resourcepacks")) &&
+                           Directory.EnumerateFileSystemEntries(GetSubFolder(instance, "resourcepacks"))
+                               .Any(p => Path.GetFileNameWithoutExtension(p).ToLowerInvariant()
+                                   .Contains(entry.Id.ToLowerInvariant()));
+                case "datapack":
+                    return Directory.Exists(GetSubFolder(instance, "datapacks")) &&
+                           Directory.EnumerateFileSystemEntries(GetSubFolder(instance, "datapacks"))
+                               .Any(p => Path.GetFileNameWithoutExtension(p).ToLowerInvariant()
+                                   .Contains(entry.Id.ToLowerInvariant()));
+            }
+        }
+        catch
+        {
+            // 忽略读取异常，视为未安装
+        }
+
+        return false;
+    }
+
+    #endregion
+
     #region 通用工具
 
     /// <summary>枚举所有实例（复用 SymbioIssues 的实现，避免重复）。</summary>
@@ -641,6 +733,28 @@ public class SymbioToolsConfig
 
     /// <summary>联机 Portal 程序路径（空则自动检测）。</summary>
     public string PortalPath { get; set; } = "";
+
+    /// <summary>资源收藏列表。</summary>
+    public List<FavoriteEntry> Favorites { get; set; } = new();
+}
+
+/// <summary>一条资源收藏记录。</summary>
+public class FavoriteEntry
+{
+    /// <summary>稳定标识（优先用项目 slug / modid，避免重复收藏）。</summary>
+    public string Id { get; set; } = "";
+
+    public string Name { get; set; } = "";
+
+    /// <summary>类型：mod / modpack / shader / datapack / resourcepack / other。</summary>
+    public string Type { get; set; } = "mod";
+
+    /// <summary>项目主页或下载页链接。</summary>
+    public string Url { get; set; } = "";
+
+    public string Note { get; set; } = "";
+
+    public DateTime AddedAt { get; set; } = DateTime.Now;
 }
 
 public class PresetEntry
