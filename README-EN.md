@@ -21,7 +21,7 @@
 
 PCL SE (Plain Craft Launcher Symbio Edition) is a third-party Minecraft launcher maintained by Hydrogen-Peroxide. Built on PCL's open-source code, it keeps the familiar interaction while adding Bedrock edition support, instance management and resource downloads.
 
-- Current version: `2.17.15`
+- Current version: `2.17.16`
 - Upstream baseline: PCL `2.12.1`
 - Tech stack: C# / WPF / .NET 10
 
@@ -126,7 +126,7 @@ See the [contribution guide](CONTRIBUTING.md#本地构建与测试) for test com
 
 - Added Bedrock edition management: version detection, package import, Xbox sign-in and local filtering
 - Removed the multiplayer lobby and its modules; no lobby or multiplayer entry points are provided
-- Uses an independent version number (`2.17.15`) based on PCL `2.12.1`
+- Uses an independent version number (`2.17.16`) based on PCL `2.12.1`
 
 ## Legal notice
 

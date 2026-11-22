@@ -98,7 +98,7 @@
                         Grid.Row="2"
                         Grid.Column="2"
                         Height="35"
-                        local:CustomEventService.EventData=""
+                        local:CustomEventService.EventData="https://github.com/27nianyun/PCL3-CE"
                         local:CustomEventService.EventType="OpenUrl"
                         Text="{DynamicResource Setup.About.SourceCode}" />
                 </Grid>
@@ -193,14 +193,14 @@
                         Grid.Column="1"
                         Grid.ColumnSpan="2"
                         Margin="-5,0,0,0"
-                        Info="{DynamicResource Setup.About.SpecialThanks.Info.Hydrogen}"
+                        Info="{DynamicResource Setup.About.SpecialThanks.Info.Maintainer}"
                         IsHitTestVisible="False"
-                        Title="{DynamicResource Setup.About.SpecialThanks.Name.Hydrogen}" />
+                        Title="{DynamicResource Setup.About.SpecialThanks.Name.Maintainer}" />
                     <local:MyButton
                         Grid.Row="5"
                         Grid.Column="2"
                         Height="35"
-                        local:CustomEventService.EventData=""
+                        local:CustomEventService.EventData="https://github.com/27nianyun"
                         local:CustomEventService.EventType="OpenUrl"
                         Text="{DynamicResource Setup.About.GitHubHome}" />
                     <local:MyListItem
@@ -277,7 +277,7 @@
                     <Image
                         Grid.Row="5"
                         Margin="3"
-                        Source="/Plain Craft Launcher 2;component/Images/Heads/Hydrogen.jpg">
+                        Source="/Plain Craft Launcher 2;component/Images/Heads/Myf.png">
                         <Image.Clip>
                             <EllipseGeometry
                                 Center="17 17"

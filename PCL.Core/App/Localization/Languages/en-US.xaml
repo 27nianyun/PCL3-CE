@@ -2884,12 +2884,12 @@
     <sys:String x:Key="Setup.About.SpecialThanks.Info.BedrockBoot">Provided the legacy Bedrock edition launch solution and implementation reference.</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Bmclapi">Provided BMCLAPI mirror and Forge installation tool. Details at https://bmclapi.bangbang93.com</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Cloud">Provided cloud services for PCL CE.</sys:String>
-    <sys:String x:Key="Setup.About.SpecialThanks.Info.Hydrogen">Maintainer of PCL₃-CE.</sys:String>
+    <sys:String x:Key="Setup.About.SpecialThanks.Info.Maintainer">Maintainer of PCL₃-CE.</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Mcim">Provided MCIM community resource mirrors and image hosting services for the help center!</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Mcmod">Provided Chinese translation of mods and more related information!</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.BedrockBoot">BedrockBoot @ Round Studio</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Bangbang93">bangbang93</sys:String>
-    <sys:String x:Key="Setup.About.SpecialThanks.Name.Hydrogen">Hydrogen Peroxide</sys:String>
+    <sys:String x:Key="Setup.About.SpecialThanks.Name.Maintainer">MuyuFeng MYF</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Mcmod">MCMod (MC 百科)</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Pysio">Pysio @ Akaere Network</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Yunmoan">云默安 @ 至远光辉</sys:String>
