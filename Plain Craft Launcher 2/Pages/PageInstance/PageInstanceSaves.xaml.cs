@@ -574,10 +574,61 @@ public partial class PageInstanceSaves : IRefreshable
                         ModLaunch.McLaunchStart(launchOptions);
                         ModMain.frmMain.PageChange(new FormMain.PageStackData { page = FormMain.PageType.Launch });
                     };
+                    // 手动备份该存档
+                    var btnBackup = new MyIconButton
+                    {
+                        SvgIcon = "lucide/save",
+                        ToolTip = Lang.Text("Instance.Saves.BackupThis")
+                    };
+                    btnBackup.Click += (_, _) =>
+                    {
+                        var folder = tmpCurFolder;
+                        ModBase.RunInNewThread(() =>
+                        {
+                            var result = ModSaveBackup.BackupWorld(currentInstance, folder);
+                            ModBase.RunInUi(() => HintService.Hint(
+                                result is null
+                                    ? Lang.Text("Instance.Saves.Backup.Failed")
+                                    : Lang.Text("Instance.Saves.Backup.OneDone"),
+                                result is null ? HintType.Error : HintType.Success));
+                        });
+                    };
+                    // 还原最近一次备份
+                    var btnRestore = new MyIconButton
+                    {
+                        SvgIcon = "lucide/rotate-ccw",
+                        ToolTip = Lang.Text("Instance.Saves.Backup.RestoreLatest")
+                    };
+                    btnRestore.Click += (_, _) =>
+                    {
+                        var folder = tmpCurFolder;
+                        var name = GetFolderNameFromPath(folder);
+                        var latest = ModSaveBackup.GetLatestBackup(currentInstance, name);
+                        if (latest is null)
+                        {
+                            HintService.Hint(Lang.Text("Instance.Saves.Backup.NoBackup"), HintType.Error);
+                            return;
+                        }
+
+                        if (ModMain.MyMsgBox(
+                                Lang.Text("Instance.Saves.Backup.RestoreConfirm", name,
+                                    Path.GetFileName(latest)), Lang.Text("Instance.Saves.Backup.RestoreTitle"),
+                                Lang.Text("Common.Action.Confirm"), Lang.Text("Common.Action.Cancel"), isWarn: true) !=
+                            1)
+                            return;
+                        ModBase.RunInNewThread(() =>
+                        {
+                            ModSaveBackup.RestoreBackup(currentInstance, name, latest);
+                            ModBase.RunInUi(() => Reload());
+                        });
+                    };
+
+                    var worldButtons = new List<MyIconButton> { btnOpen, btnDelete, btnCopy, btnBackup, btnMap, btnInfo };
+                    if (ModSaveBackup.GetLatestBackup(currentInstance, GetFolderNameFromPath(tmpCurFolder)) is not null)
+                        worldButtons.Add(btnRestore);
                     if ((bool)quickPlayFeature)
-                        worldItem.Buttons = new[] { btnOpen, btnDelete, btnCopy, btnMap, btnInfo, btnLaunch };
-                    else
-                        worldItem.Buttons = new[] { btnOpen, btnDelete, btnCopy, btnMap, btnInfo };
+                        worldButtons.Add(btnLaunch);
+                    worldItem.Buttons = worldButtons.ToArray();
 
                     PanList.Children.Add(worldItem);
                 }
@@ -679,6 +730,80 @@ public partial class PageInstanceSaves : IRefreshable
     private void BtnOpenFolder_Click(object sender, MouseButtonEventArgs e)
     {
         ModBase.OpenExplorer(worldPath);
+    }
+
+    /// <summary>直接进入最近修改过的存档。</summary>
+    private void BtnContinueLast_Click(object sender, MouseButtonEventArgs e)
+    {
+        try
+        {
+            var latest = ModSaveBackup.GetLatestWorld(currentInstance);
+            if (latest is null)
+            {
+                HintService.Hint(Lang.Text("Instance.Saves.Backup.NoSaves"), HintType.Error);
+                return;
+            }
+
+            if (!(bool)quickPlayFeature)
+            {
+                HintService.Hint(Lang.Text("Instance.Saves.ContinueLast.Unsupported"), HintType.Error);
+                return;
+            }
+
+            var worldName = GetFolderNameFromPath(latest);
+            HintService.Hint(Lang.Text("Instance.Saves.ContinueLast.Starting", worldName));
+            ModLaunch.McLaunchStart(new ModLaunch.McLaunchOptions
+            {
+                WorldName = worldName,
+                instance = currentInstance
+            });
+            ModMain.frmMain.PageChange(new FormMain.PageStackData { page = FormMain.PageType.Launch });
+        }
+        catch (Exception ex)
+        {
+            ModBase.Log(ex, "继续上次的世界失败", ModBase.LogLevel.Hint,
+                userSummary: Lang.Text("Instance.Saves.Error.OperationFailed"));
+        }
+    }
+
+    /// <summary>立即备份全部存档。</summary>
+    private void BtnBackupAll_Click(object sender, MouseButtonEventArgs e)
+    {
+        var instance = currentInstance;
+        HintService.Hint(Lang.Text("Instance.Saves.Backup.Started"));
+        ModBase.RunInNewThread(() =>
+        {
+            try
+            {
+                ModSaveBackup.BackupAllSaves(instance, false, true);
+            }
+            catch (Exception ex)
+            {
+                ModBase.Log(ex, "手动备份存档失败", ModBase.LogLevel.Hint,
+                    userSummary: Lang.Text("Instance.Saves.Backup.Failed"));
+            }
+        });
+    }
+
+    /// <summary>打开备份文件夹。</summary>
+    private void BtnBackupManage_Click(object sender, MouseButtonEventArgs e)
+    {
+        try
+        {
+            var root = ModSaveBackup.GetBackupRoot(currentInstance);
+            if (!Directory.Exists(root))
+            {
+                HintService.Hint(Lang.Text("Instance.Saves.Backup.NoBackup"), HintType.Info);
+                return;
+            }
+
+            ModBase.OpenExplorer(root);
+        }
+        catch (Exception ex)
+        {
+            ModBase.Log(ex, "打开备份文件夹失败", ModBase.LogLevel.Hint,
+                userSummary: Lang.Text("Instance.Saves.Error.OperationFailed"));
+        }
     }
 
     private void BtnPaste_Click(object sender, MouseButtonEventArgs e)

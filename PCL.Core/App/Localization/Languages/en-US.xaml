@@ -1630,6 +1630,28 @@
     <sys:String x:Key="Instance.Saves.PastedCount">Pasted {0} folder(s)</sys:String>
     <sys:String x:Key="Instance.Saves.QuickActions">Quick actions</sys:String>
     <sys:String x:Key="Instance.Saves.QuickPlay">Quick launch</sys:String>
+    <sys:String x:Key="Instance.Saves.ContinueLast">Continue last world</sys:String>
+    <sys:String x:Key="Instance.Saves.ContinueLast.ToolTip">Skip the main menu and jump straight into the most recently modified world. Requires Minecraft 1.20+ or a mod that supports quick play.</sys:String>
+    <sys:String x:Key="Instance.Saves.ContinueLast.Starting">Entering world "{0}"...</sys:String>
+    <sys:String x:Key="Instance.Saves.ContinueLast.Unsupported">This version does not support quick play. Please choose a world in-game instead.</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupAll">Back up saves now</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupAll.ToolTip">Archive every save of this instance into PCL\SaveBackup inside the instance folder.</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupManage">Backup folder</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupManage.ToolTip">Open the save backup folder of this instance.</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupThis">Back up this save</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreLatest">Restore latest backup</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreTitle">Restore save</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreConfirm">Restore save "{0}" from backup {1}?&#xA;The current save will be renamed (suffix .restore-old-time) instead of being deleted immediately.</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreDone">Restored save "{0}"</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreFailed">Failed to restore save, see the log</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.Started">Backing up saves...</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.Done">Backed up {0} save(s)</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.NothingToDo">All saves are already up to date</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.NoSaves">This instance has no saves yet</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.NoBackup">No backup found for this save</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.OneDone">Save backed up</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.Failed">Failed to back up saves, see the log</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.AutoDone">Automatically backed up {0} save(s)</sys:String>
     <sys:String x:Key="Instance.Saves.RefreshUiFailed">Failed to refresh save UI</sys:String>
     <sys:String x:Key="Instance.Saves.SaveListTitle">Save list ({0})</sys:String>
     <sys:String x:Key="Instance.Saves.Version">Version</sys:String>
@@ -2936,6 +2958,11 @@
     <sys:String x:Key="Setup.GameManage.Accessibility.ReleaseNotice.ToolTip">Show a notification when a Minecraft release is available</sys:String>
     <sys:String x:Key="Setup.GameManage.Accessibility.SnapshotNotice">Snapshot notification</sys:String>
     <sys:String x:Key="Setup.GameManage.Accessibility.SnapshotNotice.ToolTip">Show a notification when a Minecraft snapshot or pre-release is available</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.Title">Save backups</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.AutoBackup">Back up saves before launching</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.AutoBackup.ToolTip">Archive modified saves before each launch to protect against accidental deletion or corruption. Backups stay in PCL\SaveBackup inside the instance folder and are never uploaded.</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.Keep">Backups kept per save</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.Keep.ToolTip">Older backups are deleted once this number is exceeded.</sys:String>
     <sys:String x:Key="Setup.GameManage.Accessibility.Title">Accessibility</sys:String>
 
     <!-- Setup.GameManage.Community -->

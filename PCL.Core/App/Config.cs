@@ -543,6 +543,16 @@ public static partial class Config
         [ConfigItem<string>("LaunchArgumentJavaSelect", "")] public partial string SelectedJava { get; set; }
 
         /// <summary>
+        /// 启动游戏前自动备份存档。
+        /// </summary>
+        [ConfigItem<bool>("LaunchSaveAutoBackup", true, ConfigSource.Local)] public partial bool SaveAutoBackup { get; set; }
+
+        /// <summary>
+        /// 每个存档保留的备份份数。
+        /// </summary>
+        [ConfigItem<int>("LaunchSaveBackupKeep", 5, ConfigSource.Local)] public partial int SaveBackupKeep { get; set; }
+
+        /// <summary>
         /// 版本隔离 V2。
         /// </summary>
         [ConfigItem<int>("LaunchArgumentIndieV2", 4, ConfigSource.Local)] public partial int IndieSolutionV2 { get; set; }

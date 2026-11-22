@@ -67,6 +67,10 @@ public partial class PageSetupGameManage
         CheckDownloadAutoInstallDependencies.Checked = Config.Download.Comp.AutoInstallDependencies;
         CheckDownloadClipboard.Checked = Config.Download.Comp.ReadClipboard;
 
+        // 存档备份
+        CheckSaveAutoBackup.Checked = Config.Launch.SaveAutoBackup;
+        ComboSaveBackupKeep.SelectedIndex = Math.Clamp(Config.Launch.SaveBackupKeep, 1, 10) - 1;
+
         // Minecraft 更新提示
         CheckUpdateRelease.Checked = Config.Tool.ReleaseNotification;
         CheckUpdateSnapshot.Checked = Config.Tool.SnapshotNotification;
@@ -117,6 +121,14 @@ public partial class PageSetupGameManage
         var sender = (MyComboBox)senderRaw;
         if (!ModAnimation.AniExitsAnyControl())
             SetByTag(sender.Tag?.ToString(), sender.SelectedIndex);
+    }
+
+    /// <summary>备份保留份数：选项索引 0 对应 1 份，因此需要 +1。</summary>
+    private void ComboBackupKeepChange(object senderRaw, SelectionChangedEventArgs e)
+    {
+        var sender = (MyComboBox)senderRaw;
+        if (!ModAnimation.AniExitsAnyControl())
+            SetByTag(sender.Tag?.ToString(), sender.SelectedIndex + 1);
     }
 
     private static void SetByTag(string tag, object value)

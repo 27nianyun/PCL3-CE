@@ -137,28 +137,47 @@
                                        x:Name="SearchBox" />
 
                     <local:MyCard Margin="0,0,0,15" Title="{DynamicResource Instance.Saves.QuickActions}">
-                        <Grid Height="35" Margin="25,40,15,20">
+                        <Grid Margin="25,40,15,20">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="Button" />
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="Button" />
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="Button" />
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="Button" />
                             </Grid.ColumnDefinitions>
-                            <local:MyButton Grid.Column="0" MinWidth="140"
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <local:MyButton Grid.Column="0" Grid.Row="0" MinWidth="140"
                                             Text="{DynamicResource Instance.Saves.OpenFolder}" Padding="13,0"
                                             Margin="0,0,20,0" Click="BtnOpenFolder_Click"
                                             HorizontalAlignment="Left" ColorType="Highlight" />
-                            <local:MyButton Grid.Column="1" MinWidth="140"
+                            <local:MyButton Grid.Column="1" Grid.Row="0" MinWidth="140"
                                             Text="{DynamicResource Instance.Resource.DownloadNew}" Padding="13,0"
                                             Margin="0,0,20,0" Click="BtnDownloadNew_Click"
                                             HorizontalAlignment="Left" />
-                            <local:MyButton Grid.Column="2" MinWidth="140"
+                            <local:MyButton Grid.Column="2" Grid.Row="0" MinWidth="140"
                                             Text="{DynamicResource Instance.Saves.Import}" Padding="13,0"
                                             Margin="0,0,20,0" Click="BtnImport_Click"
                                             HorizontalAlignment="Left" />
-                            <local:MyButton Grid.Column="3" MinWidth="140"
+                            <local:MyButton Grid.Column="3" Grid.Row="0" MinWidth="140"
                                             Text="{DynamicResource Instance.Saves.PasteFile}" Padding="13,0"
                                             Margin="0,0,20,0" Click="BtnPaste_Click"
+                                            HorizontalAlignment="Left" />
+                            <local:MyButton Grid.Column="0" Grid.Row="1" MinWidth="140"
+                                            x:Name="BtnContinueLast" Padding="13,0"
+                                            Text="{DynamicResource Instance.Saves.ContinueLast}" ToolTip="{DynamicResource Instance.Saves.ContinueLast.ToolTip}"
+                                            Margin="0,8,20,0" Click="BtnContinueLast_Click"
+                                            HorizontalAlignment="Left" />
+                            <local:MyButton Grid.Column="1" Grid.Row="1" MinWidth="140"
+                                            x:Name="BtnBackupAll" Padding="13,0"
+                                            Text="{DynamicResource Instance.Saves.BackupAll}" ToolTip="{DynamicResource Instance.Saves.BackupAll.ToolTip}"
+                                            Margin="0,8,20,0" Click="BtnBackupAll_Click"
+                                            HorizontalAlignment="Left" />
+                            <local:MyButton Grid.Column="2" Grid.Row="1" MinWidth="140"
+                                            x:Name="BtnBackupManage" Padding="13,0"
+                                            Text="{DynamicResource Instance.Saves.BackupManage}" ToolTip="{DynamicResource Instance.Saves.BackupManage.ToolTip}"
+                                            Margin="0,8,20,0" Click="BtnBackupManage_Click"
                                             HorizontalAlignment="Left" />
                         </Grid>
                     </local:MyCard>

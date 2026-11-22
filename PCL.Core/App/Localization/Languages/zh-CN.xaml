@@ -1630,6 +1630,28 @@
     <sys:String x:Key="Instance.Saves.PastedCount">已粘贴 {0} 个文件夹</sys:String>
     <sys:String x:Key="Instance.Saves.QuickActions">快捷操作</sys:String>
     <sys:String x:Key="Instance.Saves.QuickPlay">快捷启动</sys:String>
+    <sys:String x:Key="Instance.Saves.ContinueLast">继续上次的世界</sys:String>
+    <sys:String x:Key="Instance.Saves.ContinueLast.ToolTip">不经过主菜单，直接进入最近修改过的存档。需要 1.20 及以上版本或安装了支持快捷进入的模组。</sys:String>
+    <sys:String x:Key="Instance.Saves.ContinueLast.Starting">正在进入存档「{0}」……</sys:String>
+    <sys:String x:Key="Instance.Saves.ContinueLast.Unsupported">当前版本不支持快捷进入存档，请直接在游戏内选择世界。</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupAll">立即备份存档</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupAll.ToolTip">把当前实例的所有存档打包备份到实例目录的 PCL\SaveBackup 文件夹中。</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupManage">备份文件夹</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupManage.ToolTip">打开该实例的存档备份文件夹。</sys:String>
+    <sys:String x:Key="Instance.Saves.BackupThis">备份该存档</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreLatest">还原最近备份</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreTitle">还原存档</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreConfirm">确定要把存档「{0}」还原为备份 {1} 吗？&#xA;当前存档会被改名保留（后缀 .restore-old-时间），不会立刻删除。</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreDone">已还原存档「{0}」</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.RestoreFailed">还原存档失败，请查看日志</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.Started">正在备份存档……</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.Done">已备份 {0} 个存档</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.NothingToDo">所有存档均已是最新备份，无需重复备份</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.NoSaves">当前实例还没有任何存档</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.NoBackup">该存档还没有备份</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.OneDone">存档备份完成</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.Failed">存档备份失败，请查看日志</sys:String>
+    <sys:String x:Key="Instance.Saves.Backup.AutoDone">已自动备份 {0} 个存档</sys:String>
     <sys:String x:Key="Instance.Saves.RefreshUiFailed">刷新存档UI失败</sys:String>
     <sys:String x:Key="Instance.Saves.SaveListTitle">存档列表 ({0})</sys:String>
     <sys:String x:Key="Instance.Saves.Version">版本</sys:String>
@@ -2936,6 +2958,11 @@
     <sys:String x:Key="Setup.GameManage.Accessibility.ReleaseNotice.ToolTip">在 Minecraft 正式版更新时弹窗提示</sys:String>
     <sys:String x:Key="Setup.GameManage.Accessibility.SnapshotNotice">测试版更新提示</sys:String>
     <sys:String x:Key="Setup.GameManage.Accessibility.SnapshotNotice.ToolTip">在 Minecraft 测试版（快照、预发布版）更新时弹窗提示</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.Title">存档备份</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.AutoBackup">启动游戏前自动备份存档</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.AutoBackup.ToolTip">启动前把有改动的存档打包备份，避免误删或存档损坏。备份保存在实例目录的 PCL\SaveBackup 下，不会上传。</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.Keep">每个存档保留份数</sys:String>
+    <sys:String x:Key="Setup.GameManage.Backup.Keep.ToolTip">超过该份数后自动删除最旧的备份。</sys:String>
     <sys:String x:Key="Setup.GameManage.Accessibility.Title">辅助功能</sys:String>
 
     <!-- Setup.GameManage.Community -->

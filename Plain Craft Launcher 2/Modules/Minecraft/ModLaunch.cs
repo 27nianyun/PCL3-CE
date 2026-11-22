@@ -303,6 +303,27 @@ public static class ModLaunch
             throw;
         }
 
+        // 启动前自动备份存档（PCL₃-CE）
+        // 位于 loader 线程，备份大存档时不会阻塞界面；失败不影响启动。
+        try
+        {
+            if (Config.Launch.SaveAutoBackup && ModInstanceList.McMcInstanceSelected is not null)
+            {
+                var backupInstance = ModInstanceList.McMcInstanceSelected;
+                McLaunchLog("正在检查存档备份……");
+                var backupCount = ModSaveBackup.BackupAllSaves(backupInstance, true);
+                if (backupCount > 0)
+                {
+                    McLaunchLog($"已自动备份 {backupCount} 个存档（每个保留 {ModSaveBackup.KeepCount} 份）");
+                    HintService.Hint(Lang.Text("Instance.Saves.Backup.AutoDone", backupCount), HintType.Info);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ModBase.Log(ex, "启动前自动备份存档失败");
+        }
+
         // 正式加载
         try
         {

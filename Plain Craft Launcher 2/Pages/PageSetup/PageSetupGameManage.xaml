@@ -156,6 +156,42 @@
                     </Grid>
                 </StackPanel>
             </local:MyCard>
+            <local:MyCard Margin="0,0,0,15" Title="{DynamicResource Setup.GameManage.Backup.Title}">
+                <Grid Margin="25,40,25,17">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="Name" />
+                        <ColumnDefinition Width="160" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="28" />
+                    </Grid.RowDefinitions>
+                    <local:MyCheckBox Grid.Row="0" Grid.ColumnSpan="3" Height="22"
+                                      Text="{DynamicResource Setup.GameManage.Backup.AutoBackup}"
+                                      ToolTip="{DynamicResource Setup.GameManage.Backup.AutoBackup.ToolTip}"
+                                      Change="CheckBoxChange" x:Name="CheckSaveAutoBackup"
+                                      Tag="LaunchSaveAutoBackup" />
+                    <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"
+                               Text="{DynamicResource Setup.GameManage.Backup.Keep}"
+                               Margin="0,0,25,0" />
+                    <local:MyComboBox Grid.Row="2" Grid.Column="1" x:Name="ComboSaveBackupKeep"
+                                      Tag="LaunchSaveBackupKeep" SelectionChanged="ComboBackupKeepChange"
+                                      ToolTip="{DynamicResource Setup.GameManage.Backup.Keep.ToolTip}">
+                        <local:MyComboBoxItem Content="1" />
+                        <local:MyComboBoxItem Content="2" />
+                        <local:MyComboBoxItem Content="3" />
+                        <local:MyComboBoxItem Content="4" />
+                        <local:MyComboBoxItem Content="5" IsSelected="True" />
+                        <local:MyComboBoxItem Content="6" />
+                        <local:MyComboBoxItem Content="7" />
+                        <local:MyComboBoxItem Content="8" />
+                        <local:MyComboBoxItem Content="9" />
+                        <local:MyComboBoxItem Content="10" />
+                    </local:MyComboBox>
+                </Grid>
+            </local:MyCard>
             <local:MyCard Margin="0,0,0,15" Title="{DynamicResource Setup.GameManage.Accessibility.Title}">
                 <Grid Margin="25,40,25,17">
                     <Grid.ColumnDefinitions>
